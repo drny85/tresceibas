@@ -4,6 +4,7 @@ import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { esES, enUS } from "@clerk/localizations";
 import { clerkEnabled } from "@/lib/clerk-enabled";
+import { themeScript } from "@/lib/theme";
 import { ConvexClientProvider } from "@/components/convex-client-provider";
 import { I18nProvider } from "@/i18n/provider";
 import { getDictionary } from "@/i18n/get-dictionary";
@@ -74,7 +75,10 @@ export default async function RootLayout({
   );
 
   return (
-    <html lang={lang} className={`${display.variable} ${body.variable}`}>
+    <html lang={lang} className={`${display.variable} ${body.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         {clerkEnabled ? (
           <ClerkProvider localization={lang === "es" ? esES : enUS}>

@@ -8,6 +8,7 @@ import { Menu, X } from "lucide-react";
 import { useI18n } from "@/i18n/provider";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 function rememberLocale(l: "es" | "en") {
   document.cookie = `lang=${l}; path=/; max-age=31536000; samesite=lax`;
@@ -40,9 +41,9 @@ function HeaderBar({ pathname }: { pathname: string }) {
   return (
     <header className="sticky top-[env(safe-area-inset-top,0px)] z-40 border-b border-border/70 bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 pr-[max(1rem,env(safe-area-inset-right,0px))] pl-[max(1rem,env(safe-area-inset-left,0px))]">
-        <Link href={`/${locale}`} className="flex items-center gap-2.5" onClick={() => setOpen(false)}>
+        <Link href={`/${locale}`} className="flex min-w-0 items-center gap-2" onClick={() => setOpen(false)}>
           <Image src="/brand/logo-icon.svg" alt="" width={36} height={36} priority />
-          <span className="font-display text-lg font-extrabold leading-none">
+          <span className="font-display text-lg font-extrabold leading-none whitespace-nowrap max-[359px]:sr-only">
             Tres Ceibas
             <span className="hidden text-xs font-semibold text-muted-foreground sm:block">{dict.brand.tagline}</span>
           </span>
@@ -63,7 +64,7 @@ function HeaderBar({ pathname }: { pathname: string }) {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           <div className="flex overflow-hidden rounded-full border border-border text-xs font-bold" role="group" aria-label={dict.nav.language}>
             {(["es", "en"] as const).map((l) => (
               <Link
@@ -71,12 +72,13 @@ function HeaderBar({ pathname }: { pathname: string }) {
                 href={`/${l}${rest}`}
                 onClick={() => rememberLocale(l)}
                 aria-current={l === locale ? "true" : undefined}
-                className={cn("flex h-9 min-w-10 items-center justify-center px-3 uppercase", l === locale ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground")}
+                className={cn("flex h-9 min-w-9 items-center justify-center px-2.5 uppercase sm:min-w-10 sm:px-3", l === locale ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:text-foreground")}
               >
                 {l}
               </Link>
             ))}
           </div>
+          <ThemeToggle />
           <Button asChild variant="donate" size="sm" className="hidden sm:inline-flex">
             <Link href={`/${locale}/donar`}>{dict.nav.donate}</Link>
           </Button>

@@ -20,6 +20,8 @@ export type ProgramActivity = {
   responsible?: string;
 };
 
+const upperFirst = (s: string) => s.charAt(0).toLocaleUpperCase() + s.slice(1);
+
 export const CATEGORY_ICON = { cultural: Drum, religious: Church, sports: Trophy, community: Users } as const;
 const CATEGORY_TONE: Record<Category, string> = {
   cultural: "bg-brand-gold/20 text-foreground",
@@ -68,8 +70,8 @@ export function ActivityProgram({ items }: { items: ProgramActivity[] }) {
       )}
       {days.map((day) => (
         <section key={day} className="overflow-hidden rounded-2xl border border-border bg-card">
-          <h3 className="border-b border-border bg-muted/60 px-4 py-3 text-base font-bold capitalize sm:px-5 sm:text-lg">
-            {formatDate(day, locale, { weekday: "long", day: "numeric", month: "long" })}
+          <h3 className="border-b border-border bg-muted/60 px-4 py-3 text-base font-bold sm:px-5 sm:text-lg">
+            {upperFirst(formatDate(day, locale, { weekday: "long", day: "numeric", month: "long" }))}
           </h3>
           <ol className="divide-y divide-border">
             {shown.filter((i) => i.startDate === day).map((i) => (

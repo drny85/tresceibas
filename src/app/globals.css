@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /*
   Tres Ceibas palette: Dominican blue and red, field green, ceiba gold, warm paper.
   Light theme is daytime; dark theme is the same village at dusk.
@@ -48,8 +50,47 @@
   --cloud: #ffffff;
 }
 
+/* The theme switch sets data-theme on <html>; "system" follows the device. */
+:root[data-theme="dark"] {
+  --background: #0e1726;
+  --foreground: #eef1f6;
+  --card: #152238;
+  --card-foreground: #eef1f6;
+  --popover: #152238;
+  --popover-foreground: #eef1f6;
+  --primary: #8db4ff;
+  --primary-foreground: #0b1a33;
+  --secondary: #1d2c46;
+  --secondary-foreground: #eef1f6;
+  --muted: #1b2940;
+  --muted-foreground: #9aa6b8;
+  --accent: #f2b544;
+  --accent-foreground: #14253f;
+  --destructive: #f0646c;
+  --border: #26364f;
+  --input: #33466a;
+  --ring: #8db4ff;
+  --donate: #e2283a;
+  --brand-green: #4cbf7c;
+
+  --sky-1: #132a4d;
+  --sky-2: #e58a66;
+  --sun: #f59a4a;
+  --hill-far: #3a6656;
+  --hill-1: #2f5a48;
+  --hill-2: #244a3b;
+  --ground: #2c5e3f;
+  --ground-2: #234f34;
+  --wall: #e2cfa9;
+  --glass: #3b5876;
+  --glow: #ffd27a;
+  --court: #21496e;
+  --cloud: #f4c7b3;
+  color-scheme: dark;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --background: #0e1726;
     --foreground: #eef1f6;
     --card: #152238;

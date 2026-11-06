@@ -26,13 +26,12 @@ export function formatDate(iso: string, locale: Locale, opts: Intl.DateTimeForma
 
 export function formatDateRange(start: string, end: string, locale: Locale) {
   if (start === end) return formatDate(start, locale);
-  const [ys, ms] = start.split("-");
-  const [ye, me] = end.split("-");
-  if (ys === ye && ms === me) {
-    const s = formatDate(start, locale, { day: "numeric" });
-    return `${s}–${formatDate(end, locale)}`;
-  }
-  return `${formatDate(start, locale)} – ${formatDate(end, locale)}`;
+  const toUtc = (iso: string) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return Date.UTC(y, m - 1, d);
+  };
+  const fmt = new Intl.DateTimeFormat(tag(locale), { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+  return fmt.formatRange(toUtc(start), toUtc(end));
 }
 
 export function formatRelative(ms: number, locale: Locale) {

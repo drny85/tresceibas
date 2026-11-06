@@ -31,6 +31,7 @@ export function ActivityDetailView() {
 
   return (
     <Container className="grid gap-10 py-10 sm:py-14">
+      <title>{`${pick(activity.title, locale)} · Tres Ceibas`}</title>
       <header className="grid max-w-3xl gap-4">
         {activity.parent && (
           <Link href={`/${locale}/actividades/${activity.parent.slug}`} className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
@@ -73,7 +74,9 @@ export function ActivityDetailView() {
               <PlaceholderImage label={dict.common.photoSoon} tone={1} />
             )}
           </div>
-          <p className="max-w-prose whitespace-pre-line text-lg leading-relaxed text-pretty">{pick(activity.description, locale)}</p>
+          {pick(activity.description, locale) !== pick(activity.summary, locale) && (
+            <p className="max-w-prose whitespace-pre-line text-lg leading-relaxed text-pretty">{pick(activity.description, locale)}</p>
+          )}
 
           {activity.program.length > 0 && (
             <section className="grid gap-4">

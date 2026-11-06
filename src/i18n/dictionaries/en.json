@@ -10,7 +10,13 @@
     "about": "About us",
     "donate": "Donate",
     "language": "Language",
-    "menu": "Menu"
+    "menu": "Menu",
+    "theme": "Theme",
+    "themes": {
+      "system": "automatic",
+      "light": "light",
+      "dark": "dark"
+    }
   },
   "brand": {
     "tagline": "United for our community"
