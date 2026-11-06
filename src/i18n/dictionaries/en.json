@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "Tres Ceibas · United for our community",
+    "description": "Activities and projects of the Tres Ceibas community in Villa Magante, Dominican Republic. Donate to buy the land for our community club."
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "activities": "Activities",
+    "about": "About us",
+    "donate": "Donate",
+    "language": "Language",
+    "menu": "Menu"
+  },
+  "brand": {
+    "tagline": "United for our community"
+  },
+  "common": {
+    "raised": "raised",
+    "of": "of",
+    "goal": "Goal",
+    "donors": "donors",
+    "donor": "donor",
+    "anonymous": "Anonymous",
+    "loading": "Loading…",
+    "seeMore": "See more",
+    "seeAll": "See all",
+    "donateNow": "Donate now",
+    "notFound": "We couldn't find this page.",
+    "backHome": "Back to home",
+    "photoSoon": "Photo coming soon",
+    "percentFunded": "{pct}% of the goal"
+  },
+  "home": {
+    "eyebrow": "Tres Ceibas community · Villa Magante, D.R.",
+    "title": "Let's build our community club together",
+    "lead": "We are raising RD$2,000,000 to buy the land where we will have sports, culture and faith for everyone. Every gift, from home or from abroad, builds part of the club.",
+    "illustrationCaption": "The story of our club, from the idea to opening day.",
+    "replay": "Watch again",
+    "usesTitle": "What your gift pays for",
+    "activitiesTitle": "Upcoming activities",
+    "recentTitle": "Thank you to everyone who has given",
+    "recentEmpty": "No donations yet. Be the first to give!",
+    "projectsTitle": "Community projects",
+    "storyChapters": [
+      "Neighbors gather and talk",
+      "Everyone gives what they can",
+      "Breaking ground on our land",
+      "Building it together",
+      "Our community club!"
+    ],
+    "play": "Play",
+    "pause": "Pause",
+    "timeline": "Animation timeline",
+    "clubTop": "COMMUNITY CLUB"
+  },
+  "projects": {
+    "title": "Projects",
+    "lead": "What we want to achieve as a community, how much is left, and what every peso will be used for.",
+    "empty": "No projects have been published yet.",
+    "uses": "What the funds will be used for",
+    "wall": "Donor wall",
+    "wallEmpty": "No donations for this project yet.",
+    "completed": "Goal reached",
+    "active": "Accepting donations",
+    "draft": "Draft",
+    "share": "Share this project",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "relatedActivities": "Benefit activities"
+  },
+  "activities": {
+    "title": "Activities",
+    "lead": "Events and activities in Tres Ceibas. Come, take part, and bring your family.",
+    "empty": "No activities have been published for now.",
+    "when": "Date",
+    "where": "Place",
+    "schedule": "Schedule",
+    "responsible": "In charge",
+    "benefits": "In support of"
+  },
+  "donate": {
+    "title": "Make your donation",
+    "lead": "Your gift is added to the project's total right away. You can appear with your name or give anonymously.",
+    "project": "Project",
+    "amount": "Amount in US dollars (USD)",
+    "otherAmount": "Other amount",
+    "otherShort": "Other",
+    "approx": "About {dop} at today's rate",
+    "name": "Your name",
+    "namePlaceholder": "How you want to appear on the wall",
+    "anonymous": "Give anonymously",
+    "anonymousHelp": "Your gift counts toward the total, but your name isn't shown.",
+    "email": "Email (optional)",
+    "emailHelp": "To send you a receipt. It is never published.",
+    "message": "Message for the community (optional)",
+    "messagePlaceholder": "Go Tres Ceibas!",
+    "method": "Payment method",
+    "card": "Card, Apple Pay or Google Pay",
+    "cardHelp": "Secure payment with Stripe.",
+    "paypal": "PayPal",
+    "paypalHelp": "Pay with your PayPal account.",
+    "submit": "Pay {amount}",
+    "processing": "Opening the payment page…",
+    "errorAmount": "Enter an amount between 1 and 50,000 USD.",
+    "errorName": "Enter your name or choose to give anonymously.",
+    "errorProject": "Choose a project.",
+    "errorGeneric": "We couldn't start the payment. Please try again.",
+    "cancelled": "The payment was cancelled. You can try again whenever you like.",
+    "noProjects": "No projects are accepting donations right now.",
+    "localTitle": "Are you in the community?",
+    "localBody": "You can also give cash or a bank transfer to a committee member. We record it and it will show on the wall.",
+    "secure": "We never store card details. Stripe or PayPal handles the payment.",
+    "projectGets": "The project receives",
+    "fee": "Processing fee ({method})",
+    "feeHelp": "You cover it, so the community receives your full donation.",
+    "total": "Total to pay",
+    "stripeName": "Stripe",
+    "paypalName": "PayPal"
+  },
+  "thanks": {
+    "title": "Thank you for your gift!",
+    "paid": "Your donation of {amount} to {project} has been added to the total.",
+    "pending": "We're confirming your payment. This page updates on its own in a few seconds.",
+    "failed": "The payment didn't go through. You were not charged.",
+    "missing": "We couldn't find this donation.",
+    "share": "Invite others on WhatsApp",
+    "shareText": "I just gave to the Tres Ceibas community club. Join me!",
+    "backToProject": "See the project"
+  },
+  "about": {
+    "title": "About us",
+    "lead": "Tres Ceibas is a community in Villa Magante, Dominican Republic, with many of its sons and daughters living abroad.",
+    "body": "We organize to bring people together and strengthen our cultural, religious and sports traditions. Since we have no recreation space of our own today, we want to buy land for a community club, where young people and families can gather in a healthy environment.",
+    "committee": "Organizing committee",
+    "transparency": "Transparency",
+    "transparencyBody": "Every donation is recorded and added to the total you see on this site. Gifts are used only for the purposes described in each project, which are non-profit."
+  },
+  "footer": {
+    "made": "Made with love by and for the Tres Ceibas community.",
+    "admin": "Admin"
+  }
+}

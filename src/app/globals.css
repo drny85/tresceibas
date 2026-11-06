@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+  Tres Ceibas palette: Dominican blue and red, field green, ceiba gold, warm paper.
+  Light theme is daytime; dark theme is the same village at dusk.
+*/
+:root {
+  --radius: 0.75rem;
+  --background: #f7f4ec;
+  --foreground: #14253f;
+  --card: #ffffff;
+  --card-foreground: #14253f;
+  --popover: #ffffff;
+  --popover-foreground: #14253f;
+  --primary: #002d62;
+  --primary-foreground: #ffffff;
+  --secondary: #e9eef5;
+  --secondary-foreground: #14253f;
+  --muted: #ece7dc;
+  --muted-foreground: #5b6577;
+  --accent: #f2b544;
+  --accent-foreground: #14253f;
+  --destructive: #b4232c;
+  --border: #ddd6c7;
+  --input: #cfc7b6;
+  --ring: #002d62;
+  --donate: #ce1126;
+  --donate-foreground: #ffffff;
+  --brand-blue: #002d62;
+  --brand-red: #ce1126;
+  --brand-green: #2e7d4f;
+  --brand-gold: #f2b544;
+
+  /* illustration */
+  --sky-1: #8fd3f2;
+  --sky-2: #fff3da;
+  --sun: #f2b544;
+  --hill-far: #a9d2b2;
+  --hill-1: #7fb98a;
+  --hill-2: #5e9f6e;
+  --ground: #4f9a5e;
+  --ground-2: #3f8650;
+  --wall: #f4e4c6;
+  --glass: #bfe3f5;
+  --glow: #bfe3f5;
+  --court: #2b5f8e;
+  --cloud: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0e1726;
+    --foreground: #eef1f6;
+    --card: #152238;
+    --card-foreground: #eef1f6;
+    --popover: #152238;
+    --popover-foreground: #eef1f6;
+    --primary: #8db4ff;
+    --primary-foreground: #0b1a33;
+    --secondary: #1d2c46;
+    --secondary-foreground: #eef1f6;
+    --muted: #1b2940;
+    --muted-foreground: #9aa6b8;
+    --accent: #f2b544;
+    --accent-foreground: #14253f;
+    --destructive: #f0646c;
+    --border: #26364f;
+    --input: #33466a;
+    --ring: #8db4ff;
+    --donate: #e2283a;
+    --brand-green: #4cbf7c;
+
+    --sky-1: #132a4d;
+    --sky-2: #e58a66;
+    --sun: #f59a4a;
+    --hill-far: #3a6656;
+    --hill-1: #2f5a48;
+    --hill-2: #244a3b;
+    --ground: #2c5e3f;
+    --ground-2: #234f34;
+    --wall: #e2cfa9;
+    --glass: #3b5876;
+    --glow: #ffd27a;
+    --court: #21496e;
+    --cloud: #f4c7b3;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-donate: var(--donate);
+  --color-donate-foreground: var(--donate-foreground);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-red: var(--brand-red);
+  --color-brand-green: var(--brand-green);
+  --color-brand-gold: var(--brand-gold);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* ---------- Club story ---------- */
+.club-story-scrub {
+  accent-color: var(--brand-green);
+}

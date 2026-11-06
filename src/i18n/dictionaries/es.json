@@ -1,0 +1,143 @@
+{
+  "meta": {
+    "title": "Tres Ceibas · Unidos por nuestra comunidad",
+    "description": "Actividades y proyectos de la comunidad Tres Ceibas, Villa Magante, R.D. Dona para comprar el terreno del club comunitario."
+  },
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "activities": "Actividades",
+    "about": "Nosotros",
+    "donate": "Donar",
+    "language": "Idioma",
+    "menu": "Menú"
+  },
+  "brand": {
+    "tagline": "Unidos por nuestra comunidad"
+  },
+  "common": {
+    "raised": "recaudado",
+    "of": "de",
+    "goal": "Meta",
+    "donors": "donantes",
+    "donor": "donante",
+    "anonymous": "Anónimo",
+    "loading": "Cargando…",
+    "seeMore": "Ver más",
+    "seeAll": "Ver todo",
+    "donateNow": "Donar ahora",
+    "notFound": "No encontramos esta página.",
+    "backHome": "Volver al inicio",
+    "photoSoon": "Foto próximamente",
+    "percentFunded": "{pct}% de la meta"
+  },
+  "home": {
+    "eyebrow": "Comunidad Tres Ceibas · Villa Magante, R.D.",
+    "title": "Construyamos juntos nuestro club comunitario",
+    "lead": "Estamos recaudando RD$2,000,000 para comprar el terreno donde tendremos deporte, cultura y fe para todos. Cada aporte, desde aquí o desde el exterior, levanta una parte del club.",
+    "illustrationCaption": "La historia de nuestro club, de la idea a la inauguración.",
+    "replay": "Ver de nuevo",
+    "usesTitle": "En qué se usa tu aporte",
+    "activitiesTitle": "Próximas actividades",
+    "recentTitle": "Gracias a quienes ya donaron",
+    "recentEmpty": "Todavía no hay donaciones. ¡Sé la primera persona en aportar!",
+    "projectsTitle": "Proyectos de la comunidad",
+    "storyChapters": [
+      "Los vecinos se reúnen y conversan",
+      "Cada quien aporta lo que puede",
+      "Primera palada en nuestro terreno",
+      "Construimos juntos",
+      "¡Nuestro club comunitario!"
+    ],
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "timeline": "Línea de tiempo de la animación",
+    "clubTop": "CLUB COMUNITARIO"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "lead": "Lo que queremos lograr como comunidad, cuánto falta y en qué se usará cada peso.",
+    "empty": "Aún no hay proyectos publicados.",
+    "uses": "En qué se usarán los fondos",
+    "wall": "Muro de donantes",
+    "wallEmpty": "Todavía no hay donaciones para este proyecto.",
+    "completed": "Meta alcanzada",
+    "active": "Recibiendo donaciones",
+    "draft": "Borrador",
+    "share": "Comparte este proyecto",
+    "copyLink": "Copiar enlace",
+    "copied": "Enlace copiado",
+    "relatedActivities": "Actividades a beneficio"
+  },
+  "activities": {
+    "title": "Actividades",
+    "lead": "Eventos y actividades de Tres Ceibas. Ven, participa y trae a tu familia.",
+    "empty": "No hay actividades publicadas por ahora.",
+    "when": "Fecha",
+    "where": "Lugar",
+    "schedule": "Programa",
+    "responsible": "Responsable",
+    "benefits": "A beneficio de"
+  },
+  "donate": {
+    "title": "Haz tu donación",
+    "lead": "Tu aporte se suma de inmediato al total del proyecto. Puedes aparecer con tu nombre o donar de forma anónima.",
+    "project": "Proyecto",
+    "amount": "Monto en dólares (USD)",
+    "otherAmount": "Otro monto",
+    "otherShort": "Otro",
+    "approx": "Aproximadamente {dop} a la tasa de hoy",
+    "name": "Tu nombre",
+    "namePlaceholder": "Como quieres que aparezca en el muro",
+    "anonymous": "Donar de forma anónima",
+    "anonymousHelp": "Tu aporte suma al total, pero tu nombre no se muestra.",
+    "email": "Correo electrónico (opcional)",
+    "emailHelp": "Para enviarte el recibo. No se publica.",
+    "message": "Mensaje para la comunidad (opcional)",
+    "messagePlaceholder": "¡Pa'lante Tres Ceibas!",
+    "method": "Forma de pago",
+    "card": "Tarjeta, Apple Pay o Google Pay",
+    "cardHelp": "Pago seguro con Stripe.",
+    "paypal": "PayPal",
+    "paypalHelp": "Paga con tu cuenta de PayPal.",
+    "submit": "Pagar {amount}",
+    "processing": "Abriendo la página de pago…",
+    "errorAmount": "Escribe un monto entre 1 y 50,000 USD.",
+    "errorName": "Escribe tu nombre o marca la opción anónima.",
+    "errorProject": "Elige un proyecto.",
+    "errorGeneric": "No se pudo iniciar el pago. Inténtalo de nuevo.",
+    "cancelled": "El pago se canceló. Puedes intentarlo otra vez cuando quieras.",
+    "noProjects": "No hay proyectos recibiendo donaciones en este momento.",
+    "localTitle": "¿Estás en la comunidad?",
+    "localBody": "También puedes entregar tu aporte en efectivo o por transferencia a un miembro del comité. Lo registramos y aparecerá en el muro.",
+    "secure": "No guardamos datos de tarjetas. El cobro lo hace Stripe o PayPal.",
+    "projectGets": "El proyecto recibe",
+    "fee": "Costo de procesamiento ({method})",
+    "feeHelp": "Lo cubres tú, así la comunidad recibe tu donación completa.",
+    "total": "Total a pagar",
+    "stripeName": "Stripe",
+    "paypalName": "PayPal"
+  },
+  "thanks": {
+    "title": "¡Gracias por tu aporte!",
+    "paid": "Tu donación de {amount} para {project} ya está sumada al total.",
+    "pending": "Estamos confirmando tu pago. Esta página se actualiza sola en unos segundos.",
+    "failed": "El pago no se completó. No se hizo ningún cargo.",
+    "missing": "No encontramos esta donación.",
+    "share": "Invita a otros por WhatsApp",
+    "shareText": "Acabo de donar para el club comunitario de Tres Ceibas. ¡Súmate!",
+    "backToProject": "Ver el proyecto"
+  },
+  "about": {
+    "title": "Nosotros",
+    "lead": "Tres Ceibas es una comunidad de Villa Magante, en la República Dominicana, con muchos de sus hijos viviendo en el exterior.",
+    "body": "Nos organizamos para promover la integración social y fortalecer nuestros valores culturales, religiosos y deportivos. Como hoy no tenemos espacios propios de recreación, queremos comprar un terreno para el club comunitario, donde los jóvenes y las familias puedan reunirse en un ambiente sano.",
+    "committee": "Comité organizador",
+    "transparency": "Transparencia",
+    "transparencyBody": "Cada donación queda registrada y se suma al total que ves en el sitio. Los aportes se usan exclusivamente para los fines descritos en cada proyecto, que son sin fines de lucro."
+  },
+  "footer": {
+    "made": "Hecho con cariño por y para la comunidad de Tres Ceibas.",
+    "admin": "Administración"
+  }
+}
