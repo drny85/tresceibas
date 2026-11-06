@@ -73,7 +73,33 @@
     "share": "Share this project",
     "copyLink": "Copy link",
     "copied": "Link copied",
-    "relatedActivities": "Benefit activities"
+    "relatedActivities": "Benefit activities",
+    "motivation": {
+      "eyebrow": "Your gift matters",
+      "title": "Every peso builds a piece of our club",
+      "body": [
+        "Many of us grew up playing on the court, running along the roads of Tres Ceibas and sharing time with family. Today we have the chance to give our children and young people a place of their own, healthy and safe, where they can grow up together the way we did.",
+        "Whether you are back home, in Santiago, in New York or in Spain: when you give, you put your name in the story of Tres Ceibas. No gift is small when we give together."
+      ],
+      "impactTitle": "How your gift adds up",
+      "impact": [
+        {
+          "usd": 10,
+          "text": "Your grain of sand toward the club's land."
+        },
+        {
+          "usd": 25,
+          "text": "One more step toward the goal, and your name on the donor wall."
+        },
+        {
+          "usd": 100,
+          "text": "A big push to make the club a reality."
+        }
+      ],
+      "approx": "≈ {dop}",
+      "cta": "I want to give",
+      "share": "Can't give right now? Share this page with your family; that helps too."
+    }
   },
   "activities": {
     "title": "Activities",

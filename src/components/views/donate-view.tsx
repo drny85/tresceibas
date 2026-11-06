@@ -36,8 +36,11 @@ export function DonateView() {
 
   const active = useMemo(() => (projects ?? []).filter((p) => p.status === "active"), [projects]);
   const [slug, setSlug] = useState<string | null>(search.get("proyecto"));
-  const [preset, setPreset] = useState<number | null>(25);
-  const [custom, setCustom] = useState("");
+  // ?monto=50 (from the projects page) preselects that amount.
+  const linked = Number(search.get("monto"));
+  const linkedOk = Number.isFinite(linked) && linked >= MIN_DONATION_USD && linked <= MAX_DONATION_USD;
+  const [preset, setPreset] = useState<number | null>(linkedOk && PRESETS.includes(linked) ? linked : linkedOk ? null : 25);
+  const [custom, setCustom] = useState(linkedOk && !PRESETS.includes(linked) ? String(linked) : "");
   const [name, setName] = useState("");
   const [anonymous, setAnonymous] = useState(false);
   const [email, setEmail] = useState("");

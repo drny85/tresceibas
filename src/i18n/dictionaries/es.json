@@ -73,7 +73,33 @@
     "share": "Comparte este proyecto",
     "copyLink": "Copiar enlace",
     "copied": "Enlace copiado",
-    "relatedActivities": "Actividades a beneficio"
+    "relatedActivities": "Actividades a beneficio",
+    "motivation": {
+      "eyebrow": "Tu aporte cuenta",
+      "title": "Cada peso levanta una parte de nuestro club",
+      "body": [
+        "Muchos crecimos jugando en la cancha, corriendo por los caminos de Tres Ceibas y compartiendo en familia. Hoy tenemos la oportunidad de darles a nuestros niños y jóvenes un lugar propio, sano y seguro, donde crezcan unidos como crecimos nosotros.",
+        "No importa si estás en el campo, en Santiago, en Nueva York o en España: cuando donas, pones tu nombre en la historia de Tres Ceibas. Ningún aporte es pequeño cuando lo damos juntos."
+      ],
+      "impactTitle": "Así suma tu aporte",
+      "impact": [
+        {
+          "usd": 10,
+          "text": "Tu granito de arena para el terreno del club."
+        },
+        {
+          "usd": 25,
+          "text": "Un paso más hacia la meta, y tu nombre en el muro de donantes."
+        },
+        {
+          "usd": 100,
+          "text": "Un gran empujón para que el club sea una realidad."
+        }
+      ],
+      "approx": "≈ {dop}",
+      "cta": "Quiero donar",
+      "share": "¿No puedes donar ahora? Comparte esta página con tu familia; eso también ayuda."
+    }
   },
   "activities": {
     "title": "Actividades",
