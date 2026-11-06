@@ -45,7 +45,8 @@ export function percent(raised: number, goal: number) {
 
 /** "16:30" → "4:30 p. m." (es) or "4:30 PM" (en). */
 export function formatTime(hhmm: string, locale: Locale) {
-  const [h, m] = hhmm.split(":").map(Number);
+  // 23:59 is stored as "end of the night" so it still sorts last; show it as midnight.
+  const [h, m] = hhmm === "23:59" ? [24, 0] : hhmm.split(":").map(Number);
   return new Intl.DateTimeFormat(tag(locale), { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(Date.UTC(2000, 0, 1, h, m));
 }
 

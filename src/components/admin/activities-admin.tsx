@@ -65,7 +65,7 @@ const CATEGORY_DOT: Record<Category | "event", string> = {
 
 const DEFAULT_LOCATION = "La Cancha de Tres Ceibas, Villa Magante, R.D.";
 
-/** Every half hour from 6:00 a. m. to 11:30 p. m., plus 11:59 p. m. to end the night. */
+/** Every half hour from 6:00 a. m. to 11:30 p. m., plus midnight (stored as 23:59) to end the night. */
 const TIME_SLOTS = [
   ...Array.from({ length: 36 }, (_, i) => {
     const mins = 6 * 60 + i * 30;
@@ -139,7 +139,7 @@ function TimeSelect({ id, value, onChange, after, placeholder }: { id: string; v
     <Select id={id} value={value} onChange={(e) => onChange(e.target.value)} className="tabular">
       <option value="">{placeholder}</option>
       {TIME_SLOTS.filter((t) => !after || t > after).map((t) => (
-        <option key={t} value={t}>{formatTime(t, "es")}</option>
+        <option key={t} value={t}>{formatTime(t, "es")}{t === "23:59" ? " (medianoche)" : ""}</option>
       ))}
     </Select>
   );
