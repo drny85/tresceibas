@@ -24,7 +24,14 @@ function range(e: When): [string, string, boolean] {
   const last = e.endDate ?? e.startDate;
   if (!e.startTime) return [compact(e.startDate), compact(nextDay(last)), true];
   const end = e.endTime ?? `${String(Math.min(Number(e.startTime.slice(0, 2)) + 1, 23)).padStart(2, "0")}:${e.startTime.slice(3)}`;
-  return [utcStamp(e.startDate, e.startTime), utcStamp(last, end), false];
+  // A timed activity over several days repeats daily (e.g. 10:30–6:00 each day), not one long block.
+  return [utcStamp(e.startDate, e.startTime), utcStamp(e.startDate, end), false];
+}
+
+/** Number of days a timed multi-day activity repeats, or null for a single day / all day. */
+function repeatDays(e: When) {
+  if (!e.startTime || !e.endDate || e.endDate <= e.startDate) return null;
+  return Math.round((Date.parse(`${e.endDate}T00:00:00Z`) - Date.parse(`${e.startDate}T00:00:00Z`)) / 86_400_000) + 1;
 }
 
 export function googleCalendarUrl(e: CalEvent) {
@@ -37,6 +44,8 @@ export function googleCalendarUrl(e: CalEvent) {
     location: e.location,
     ctz: "America/Santo_Domingo",
   });
+  const days = repeatDays(e);
+  if (days) q.set("recur", `RRULE:FREQ=DAILY;COUNT=${days}`);
   return `https://calendar.google.com/calendar/render?${q}`;
 }
 
@@ -56,6 +65,7 @@ export function icsFile(e: CalEvent & { uid: string }) {
     `DTSTAMP:${stamp}`,
     allDay ? `DTSTART;VALUE=DATE:${start}` : `DTSTART:${start}`,
     allDay ? `DTEND;VALUE=DATE:${end}` : `DTEND:${end}`,
+    ...(repeatDays(e) ? [`RRULE:FREQ=DAILY;COUNT=${repeatDays(e)}`] : []),
     `SUMMARY:${escapeIcs(e.title)}`,
     `DESCRIPTION:${escapeIcs(`${e.details}\n\n${e.url}`)}`,
     `LOCATION:${escapeIcs(e.location)}`,
