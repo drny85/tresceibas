@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "title": "Tres Ceibas · Unidos por nuestra comunidad",
+    "description": "Actividades y proyectos de la comunidad Tres Ceibas, Villa Magante, R.D. Dona para comprar el terreno del club comunitario."
+  },
+  "nav": {
+    "home": "Inicio",
+    "projects": "Proyectos",
+    "activities": "Actividades",
+    "about": "Nosotros",
+    "donate": "Donar",
+    "language": "Idioma",
+    "menu": "Menú",
+    "theme": "Tema",
+    "themes": {
+      "system": "automático",
+      "light": "claro",
+      "dark": "oscuro"
+    }
+  },
+  "brand": {
+    "tagline": "Unidos por nuestra comunidad"
+  },
+  "common": {
+    "raised": "recaudado",
+    "of": "de",
+    "goal": "Meta",
+    "donors": "donantes",
+    "donor": "donante",
+    "anonymous": "Anónimo",
+    "loading": "Cargando…",
+    "seeMore": "Ver más",
+    "seeAll": "Ver todo",
+    "donateNow": "Donar ahora",
+    "notFound": "No encontramos esta página.",
+    "backHome": "Volver al inicio",
+    "photoSoon": "Foto próximamente",
+    "percentFunded": "{pct}% de la meta",
+    "share": "Compartir",
+    "goalReached": "¡Meta alcanzada!",
+    "toMilestone": "Faltan {amount} para llegar al {pct}%"
+  },
+  "home": {
+    "eyebrow": "Comunidad Tres Ceibas · Villa Magante, R.D.",
+    "title": "Construyamos juntos nuestro club comunitario",
+    "lead": "Estamos recaudando RD$2,000,000 para comprar el terreno donde tendremos deporte, cultura y fe para todos. Cada aporte, desde aquí o desde el exterior, levanta una parte del club.",
+    "illustrationCaption": "La historia de nuestro club, de la idea a la inauguración.",
+    "replay": "Ver de nuevo",
+    "usesTitle": "En qué se usa tu aporte",
+    "activitiesTitle": "Próximas actividades",
+    "recentTitle": "Gracias a quienes ya donaron",
+    "recentEmpty": "Todavía no hay donaciones. ¡Sé la primera persona en aportar!",
+    "projectsTitle": "Proyectos de la comunidad",
+    "storyChapters": [
+      "Los vecinos se reúnen y conversan",
+      "Cada quien aporta lo que puede",
+      "Primera palada en nuestro terreno",
+      "Construimos juntos",
+      "¡Nuestro club comunitario!"
+    ],
+    "play": "Reproducir",
+    "pause": "Pausar",
+    "timeline": "Línea de tiempo de la animación",
+    "clubTop": "CLUB COMUNITARIO",
+    "gave": "donó",
+    "countdown": "Faltan {days} días para {event}",
+    "countdownOne": "Falta 1 día para {event}",
+    "countdownToday": "¡{event} es hoy!"
+  },
+  "projects": {
+    "title": "Proyectos",
+    "lead": "Lo que queremos lograr como comunidad, cuánto falta y en qué se usará cada peso.",
+    "empty": "Aún no hay proyectos publicados.",
+    "uses": "En qué se usarán los fondos",
+    "wall": "Muro de donantes",
+    "wallEmpty": "Todavía no hay donaciones para este proyecto.",
+    "completed": "Meta alcanzada",
+    "active": "Recibiendo donaciones",
+    "draft": "Borrador",
+    "share": "Comparte este proyecto",
+    "copyLink": "Copiar enlace",
+    "copied": "Enlace copiado",
+    "relatedActivities": "Actividades a beneficio",
+    "motivation": {
+      "eyebrow": "Tu aporte cuenta",
+      "title": "Cada peso levanta una parte de nuestro club",
+      "body": [
+        "Muchos crecimos jugando en la cancha, corriendo por los caminos de Tres Ceibas y compartiendo en familia. Hoy tenemos la oportunidad de darles a nuestros niños y jóvenes un lugar propio, sano y seguro, donde crezcan unidos como crecimos nosotros.",
+        "No importa si estás en el campo, en Santiago, en Nueva York o en España: cuando donas, pones tu nombre en la historia de Tres Ceibas. Ningún aporte es pequeño cuando lo damos juntos."
+      ],
+      "impactTitle": "Así suma tu aporte",
+      "impact": [
+        {
+          "usd": 10,
+          "text": "Tu granito de arena para el terreno del club."
+        },
+        {
+          "usd": 25,
+          "text": "Un paso más hacia la meta, y tu nombre en el muro de donantes."
+        },
+        {
+          "usd": 100,
+          "text": "Un gran empujón para que el club sea una realidad."
+        }
+      ],
+      "approx": "≈ {dop}",
+      "cta": "Quiero donar",
+      "share": "¿No puedes donar ahora? Comparte esta página con tu familia; eso también ayuda."
+    }
+  },
+  "activities": {
+    "title": "Actividades",
+    "lead": "Eventos y actividades de Tres Ceibas. Ven, participa y trae a tu familia.",
+    "empty": "No hay actividades publicadas por ahora.",
+    "when": "Fecha",
+    "where": "Lugar",
+    "schedule": "Programa",
+    "responsible": "Responsable",
+    "benefits": "A beneficio de",
+    "program": "Programa completo",
+    "programLead": "Todas las actividades del evento, día por día. Toca una para ver los detalles.",
+    "all": "Todas",
+    "partOf": "Parte de",
+    "time": "Hora",
+    "allDay": "Todo el día",
+    "events": "Eventos",
+    "categories": {
+      "cultural": "Cultural",
+      "religious": "Religiosa",
+      "sports": "Deportiva",
+      "community": "Comunitaria"
+    },
+    "disclaimer": "Las actividades, fechas y horarios están sujetos a cambios. Revisa esta página antes del evento para ver la información más reciente.",
+    "addToCalendar": "Añadir a mi calendario",
+    "appleOutlook": "Apple u Outlook",
+    "directions": "Cómo llegar",
+    "invite": "Invita a tu familia"
+  },
+  "donate": {
+    "title": "Haz tu donación",
+    "lead": "Tu aporte se suma de inmediato al total del proyecto. Puedes aparecer con tu nombre o donar de forma anónima.",
+    "project": "Proyecto",
+    "amount": "Monto en dólares (USD)",
+    "otherAmount": "Otro monto",
+    "otherShort": "Otro",
+    "approx": "Aproximadamente {dop} a la tasa de hoy",
+    "name": "Tu nombre",
+    "namePlaceholder": "Como quieres que aparezca en el muro",
+    "anonymous": "Donar de forma anónima",
+    "anonymousHelp": "Tu aporte suma al total, pero tu nombre no se muestra.",
+    "email": "Correo electrónico (opcional)",
+    "emailHelp": "Para enviarte el recibo. No se publica.",
+    "message": "Mensaje para la comunidad (opcional)",
+    "messagePlaceholder": "¡Pa'lante Tres Ceibas!",
+    "method": "Forma de pago",
+    "card": "Tarjeta, Apple Pay o Google Pay",
+    "cardHelp": "Pago seguro con Stripe.",
+    "paypal": "PayPal",
+    "paypalHelp": "Paga con tu cuenta de PayPal.",
+    "submit": "Pagar {amount}",
+    "processing": "Abriendo la página de pago…",
+    "errorAmount": "Escribe un monto entre 1 y 50,000 USD.",
+    "errorName": "Escribe tu nombre o marca la opción anónima.",
+    "errorProject": "Elige un proyecto.",
+    "errorGeneric": "No se pudo iniciar el pago. Inténtalo de nuevo.",
+    "cancelled": "El pago se canceló. Puedes intentarlo otra vez cuando quieras.",
+    "noProjects": "No hay proyectos recibiendo donaciones en este momento.",
+    "localTitle": "¿Estás en la comunidad?",
+    "localBody": "También puedes entregar tu aporte en efectivo o por transferencia a un miembro del comité. Lo registramos y aparecerá en el muro.",
+    "secure": "No guardamos datos de tarjetas. El cobro lo hace Stripe o PayPal.",
+    "projectGets": "El proyecto recibe",
+    "fee": "Costo de procesamiento ({method})",
+    "feeHelp": "Lo cubres tú, así la comunidad recibe tu donación completa.",
+    "total": "Total a pagar",
+    "stripeName": "Stripe",
+    "paypalName": "PayPal",
+    "dedicate": "Dedicar mi donación",
+    "dedicateHelp": "En honor de alguien especial o en memoria de un ser querido. Se mostrará junto a tu donación.",
+    "inHonor": "En honor de",
+    "inMemory": "En memoria de",
+    "tributeName": "Nombre de la persona",
+    "tributeHonorPlaceholder": "Ej.: mi madre, Ana Polanco",
+    "tributeMemoryPlaceholder": "Ej.: mi abuelo, don Julio Ventura",
+    "errorTribute": "Escribe el nombre de la persona a quien dedicas tu donación."
+  },
+  "thanks": {
+    "title": "¡Gracias por tu aporte!",
+    "paid": "Tu donación de {amount} para {project} ya está sumada al total.",
+    "pending": "Estamos confirmando tu pago. Esta página se actualiza sola en unos segundos.",
+    "failed": "El pago no se completó. No se hizo ningún cargo.",
+    "missing": "No encontramos esta donación.",
+    "share": "Invita a otros por WhatsApp",
+    "shareText": "Acabo de donar para el club comunitario de Tres Ceibas. ¡Súmate!",
+    "backToProject": "Ver el proyecto"
+  },
+  "about": {
+    "title": "Nosotros",
+    "eyebrow": "Villa Magante, República Dominicana",
+    "lead": "Tres Ceibas es una comunidad de Villa Magante, en la República Dominicana, con muchos de sus hijos viviendo en el exterior.",
+    "storyTitle": "Una comunidad unida, aquí y afuera",
+    "story": [
+      "Tres Ceibas es un campo de familias que se conocen de toda la vida. Aquí crecimos jugando en la cancha, yendo a la iglesia y celebrando juntos cada fiesta del año.",
+      "Con el tiempo, muchos de nuestros hijos se fueron a vivir al exterior, pero nunca dejaron de sentirse ceiberos. Cada visita, cada llamada y cada aporte desde afuera mantiene viva la conexión con el campo.",
+      "Hoy nos organizamos para darle a la comunidad algo que nos falta: un espacio propio donde los jóvenes y las familias puedan reunirse en un ambiente sano."
+    ],
+    "stats": [
+      {
+        "value": "RD$2M",
+        "label": "meta para comprar el terreno del club"
+      },
+      {
+        "value": "6",
+        "label": "miembros del comité organizador"
+      },
+      {
+        "value": "3",
+        "label": "días de actividades en febrero de 2027"
+      }
+    ],
+    "missionTitle": "Nuestro propósito",
+    "mission": "Fortalecer la integración comunitaria mediante actividades culturales, religiosas y deportivas en Tres Ceibas.",
+    "goalsTitle": "Lo que buscamos",
+    "goals": [
+      {
+        "title": "Identidad cultural",
+        "body": "Rescatar nuestras tradiciones con música típica, baile, artesanía local y la feria gastronómica."
+      },
+      {
+        "title": "Deporte",
+        "body": "Incentivar el deporte con torneos de baloncesto, atletismo, caminatas y juegos para los niños."
+      },
+      {
+        "title": "Juventud",
+        "body": "Integrar a los jóvenes en actividades sanas que fomenten la convivencia pacífica."
+      },
+      {
+        "title": "Fe y valores",
+        "body": "Fomentar los valores espirituales junto a nuestra iglesia, con misa comunitaria y momentos de unión."
+      }
+    ],
+    "dreamTitle": "El sueño: nuestro club comunitario",
+    "dreamBody": "Hoy no tenemos espacios propios de recreación. Por eso estamos recaudando fondos para comprar el terreno donde se levantará el club comunitario de Tres Ceibas: un lugar para el deporte, la cultura, las reuniones familiares y las celebraciones de todo el campo.",
+    "dreamPoints": [
+      "Cancha y área deportiva",
+      "Salón para actividades y reuniones",
+      "Espacio seguro para niños y jóvenes",
+      "Lugar de encuentro para quienes vuelven del exterior"
+    ],
+    "dreamCta": "Ver el proyecto",
+    "committee": "Comité organizador",
+    "committeeLead": "Vecinos voluntarios que organizan las actividades y rinden cuentas a la comunidad.",
+    "transparency": "Transparencia",
+    "transparencyBody": "Cada donación queda registrada y se suma al total que ves en el sitio. Los aportes se usan exclusivamente para los fines descritos en cada proyecto, que son sin fines de lucro.",
+    "transparencyPoints": [
+      "Cada aporte en línea se registra al instante y aparece en el muro de donantes, con nombre o de forma anónima.",
+      "El donante cubre la comisión de la tarjeta, así el proyecto recibe el monto completo.",
+      "Los aportes en efectivo o por transferencia los registra el comité y también suman al total.",
+      "Cada proyecto muestra en qué se usará el dinero, partida por partida."
+    ],
+    "helpTitle": "¿Cómo puedes ayudar?",
+    "help": [
+      {
+        "title": "Dona",
+        "body": "Desde aquí o desde el exterior, cada aporte cuenta, sin importar el monto."
+      },
+      {
+        "title": "Sé voluntario",
+        "body": "Necesitamos organizadores, voluntarios y entrenadores para las actividades."
+      },
+      {
+        "title": "Patrocina",
+        "body": "Empresarios y negocios pueden apoyar con patrocinios, premios o materiales."
+      },
+      {
+        "title": "Comparte",
+        "body": "Envía este sitio a tu familia y amigos ceiberos por WhatsApp."
+      }
+    ],
+    "donate": "Donar ahora",
+    "activities": "Ver actividades",
+    "contact": "Escríbenos por WhatsApp",
+    "email": "Correo"
+  },
+  "footer": {
+    "made": "Hecho con cariño por y para la comunidad de Tres Ceibas.",
+    "admin": "Administración"
+  },
+  "contact": {
+    "label": "Escríbenos por WhatsApp",
+    "withName": "Escríbele a {name} por WhatsApp",
+    "hi": "Hola, {name}.",
+    "text": "Te escribo desde el sitio de Tres Ceibas.",
+    "aboutText": "Tengo una pregunta sobre «{about}».",
+    "questions": "¿Preguntas sobre esta actividad?"
+  }
+}

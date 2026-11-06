@@ -1,0 +1,296 @@
+{
+  "meta": {
+    "title": "Tres Ceibas · United for our community",
+    "description": "Activities and projects of the Tres Ceibas community in Villa Magante, Dominican Republic. Donate to buy the land for our community club."
+  },
+  "nav": {
+    "home": "Home",
+    "projects": "Projects",
+    "activities": "Activities",
+    "about": "About us",
+    "donate": "Donate",
+    "language": "Language",
+    "menu": "Menu",
+    "theme": "Theme",
+    "themes": {
+      "system": "automatic",
+      "light": "light",
+      "dark": "dark"
+    }
+  },
+  "brand": {
+    "tagline": "United for our community"
+  },
+  "common": {
+    "raised": "raised",
+    "of": "of",
+    "goal": "Goal",
+    "donors": "donors",
+    "donor": "donor",
+    "anonymous": "Anonymous",
+    "loading": "Loading…",
+    "seeMore": "See more",
+    "seeAll": "See all",
+    "donateNow": "Donate now",
+    "notFound": "We couldn't find this page.",
+    "backHome": "Back to home",
+    "photoSoon": "Photo coming soon",
+    "percentFunded": "{pct}% of the goal",
+    "share": "Share",
+    "goalReached": "Goal reached!",
+    "toMilestone": "{amount} to go to reach {pct}%"
+  },
+  "home": {
+    "eyebrow": "Tres Ceibas community · Villa Magante, D.R.",
+    "title": "Let's build our community club together",
+    "lead": "We are raising RD$2,000,000 to buy the land where we will have sports, culture and faith for everyone. Every gift, from home or from abroad, builds part of the club.",
+    "illustrationCaption": "The story of our club, from the idea to opening day.",
+    "replay": "Watch again",
+    "usesTitle": "What your gift pays for",
+    "activitiesTitle": "Upcoming activities",
+    "recentTitle": "Thank you to everyone who has given",
+    "recentEmpty": "No donations yet. Be the first to give!",
+    "projectsTitle": "Community projects",
+    "storyChapters": [
+      "Neighbors gather and talk",
+      "Everyone gives what they can",
+      "Breaking ground on our land",
+      "Building it together",
+      "Our community club!"
+    ],
+    "play": "Play",
+    "pause": "Pause",
+    "timeline": "Animation timeline",
+    "clubTop": "COMMUNITY CLUB",
+    "gave": "gave",
+    "countdown": "{days} days to {event}",
+    "countdownOne": "1 day to {event}",
+    "countdownToday": "{event} is today!"
+  },
+  "projects": {
+    "title": "Projects",
+    "lead": "What we want to achieve as a community, how much is left, and what every peso will be used for.",
+    "empty": "No projects have been published yet.",
+    "uses": "What the funds will be used for",
+    "wall": "Donor wall",
+    "wallEmpty": "No donations for this project yet.",
+    "completed": "Goal reached",
+    "active": "Accepting donations",
+    "draft": "Draft",
+    "share": "Share this project",
+    "copyLink": "Copy link",
+    "copied": "Link copied",
+    "relatedActivities": "Benefit activities",
+    "motivation": {
+      "eyebrow": "Your gift matters",
+      "title": "Every peso builds a piece of our club",
+      "body": [
+        "Many of us grew up playing on the court, running along the roads of Tres Ceibas and sharing time with family. Today we have the chance to give our children and young people a place of their own, healthy and safe, where they can grow up together the way we did.",
+        "Whether you are back home, in Santiago, in New York or in Spain: when you give, you put your name in the story of Tres Ceibas. No gift is small when we give together."
+      ],
+      "impactTitle": "How your gift adds up",
+      "impact": [
+        {
+          "usd": 10,
+          "text": "Your grain of sand toward the club's land."
+        },
+        {
+          "usd": 25,
+          "text": "One more step toward the goal, and your name on the donor wall."
+        },
+        {
+          "usd": 100,
+          "text": "A big push to make the club a reality."
+        }
+      ],
+      "approx": "≈ {dop}",
+      "cta": "I want to give",
+      "share": "Can't give right now? Share this page with your family; that helps too."
+    }
+  },
+  "activities": {
+    "title": "Activities",
+    "lead": "Events and activities in Tres Ceibas. Come, take part, and bring your family.",
+    "empty": "No activities have been published for now.",
+    "when": "Date",
+    "where": "Place",
+    "schedule": "Schedule",
+    "responsible": "In charge",
+    "benefits": "In support of",
+    "program": "Full program",
+    "programLead": "Every activity of the event, day by day. Tap one for details.",
+    "all": "All",
+    "partOf": "Part of",
+    "time": "Time",
+    "allDay": "All day",
+    "events": "Events",
+    "categories": {
+      "cultural": "Cultural",
+      "religious": "Religious",
+      "sports": "Sports",
+      "community": "Community"
+    },
+    "disclaimer": "Activities, dates and times are subject to change. Check this page before the event for the latest information.",
+    "addToCalendar": "Add to my calendar",
+    "appleOutlook": "Apple or Outlook",
+    "directions": "Directions",
+    "invite": "Invite your family"
+  },
+  "donate": {
+    "title": "Make your donation",
+    "lead": "Your gift is added to the project's total right away. You can appear with your name or give anonymously.",
+    "project": "Project",
+    "amount": "Amount in US dollars (USD)",
+    "otherAmount": "Other amount",
+    "otherShort": "Other",
+    "approx": "About {dop} at today's rate",
+    "name": "Your name",
+    "namePlaceholder": "How you want to appear on the wall",
+    "anonymous": "Give anonymously",
+    "anonymousHelp": "Your gift counts toward the total, but your name isn't shown.",
+    "email": "Email (optional)",
+    "emailHelp": "To send you a receipt. It is never published.",
+    "message": "Message for the community (optional)",
+    "messagePlaceholder": "Go Tres Ceibas!",
+    "method": "Payment method",
+    "card": "Card, Apple Pay or Google Pay",
+    "cardHelp": "Secure payment with Stripe.",
+    "paypal": "PayPal",
+    "paypalHelp": "Pay with your PayPal account.",
+    "submit": "Pay {amount}",
+    "processing": "Opening the payment page…",
+    "errorAmount": "Enter an amount between 1 and 50,000 USD.",
+    "errorName": "Enter your name or choose to give anonymously.",
+    "errorProject": "Choose a project.",
+    "errorGeneric": "We couldn't start the payment. Please try again.",
+    "cancelled": "The payment was cancelled. You can try again whenever you like.",
+    "noProjects": "No projects are accepting donations right now.",
+    "localTitle": "Are you in the community?",
+    "localBody": "You can also give cash or a bank transfer to a committee member. We record it and it will show on the wall.",
+    "secure": "We never store card details. Stripe or PayPal handles the payment.",
+    "projectGets": "The project receives",
+    "fee": "Processing fee ({method})",
+    "feeHelp": "You cover it, so the community receives your full donation.",
+    "total": "Total to pay",
+    "stripeName": "Stripe",
+    "paypalName": "PayPal",
+    "dedicate": "Dedicate my donation",
+    "dedicateHelp": "In honor of someone special or in memory of a loved one. It is shown next to your donation.",
+    "inHonor": "In honor of",
+    "inMemory": "In memory of",
+    "tributeName": "Person's name",
+    "tributeHonorPlaceholder": "E.g. my mother, Ana Polanco",
+    "tributeMemoryPlaceholder": "E.g. my grandfather, Don Julio Ventura",
+    "errorTribute": "Write the name of the person you are dedicating your donation to."
+  },
+  "thanks": {
+    "title": "Thank you for your gift!",
+    "paid": "Your donation of {amount} to {project} has been added to the total.",
+    "pending": "We're confirming your payment. This page updates on its own in a few seconds.",
+    "failed": "The payment didn't go through. You were not charged.",
+    "missing": "We couldn't find this donation.",
+    "share": "Invite others on WhatsApp",
+    "shareText": "I just gave to the Tres Ceibas community club. Join me!",
+    "backToProject": "See the project"
+  },
+  "about": {
+    "title": "About us",
+    "eyebrow": "Villa Magante, Dominican Republic",
+    "lead": "Tres Ceibas is a community in Villa Magante, Dominican Republic, with many of its sons and daughters living abroad.",
+    "storyTitle": "One community, here and abroad",
+    "story": [
+      "Tres Ceibas is a rural community of families who have known each other all their lives. We grew up playing on the court, going to church and celebrating every festivity together.",
+      "Over time, many of our children moved abroad, but they never stopped feeling like ceiberos. Every visit, every call and every contribution from afar keeps the bond with home alive.",
+      "Today we are organizing to give the community something it lacks: a place of its own where young people and families can gather in a healthy environment."
+    ],
+    "stats": [
+      {
+        "value": "RD$2M",
+        "label": "goal to buy the land for the club"
+      },
+      {
+        "value": "6",
+        "label": "organizing committee members"
+      },
+      {
+        "value": "3",
+        "label": "days of activities in February 2027"
+      }
+    ],
+    "missionTitle": "Our purpose",
+    "mission": "To strengthen community ties through cultural, religious and sports activities in Tres Ceibas.",
+    "goalsTitle": "What we aim for",
+    "goals": [
+      {
+        "title": "Cultural identity",
+        "body": "Keep our traditions alive with typical music, dance, local crafts and the food fair."
+      },
+      {
+        "title": "Sports",
+        "body": "Encourage sports with basketball tournaments, track events, walks and games for kids."
+      },
+      {
+        "title": "Youth",
+        "body": "Bring young people into healthy activities that build peaceful coexistence."
+      },
+      {
+        "title": "Faith and values",
+        "body": "Nurture spiritual values together with our church, with a community mass and moments of unity."
+      }
+    ],
+    "dreamTitle": "The dream: our community club",
+    "dreamBody": "Today we have no recreation spaces of our own. That is why we are raising funds to buy the land for the Tres Ceibas community club: a place for sports, culture, family gatherings and celebrations for the whole community.",
+    "dreamPoints": [
+      "Court and sports area",
+      "Hall for events and meetings",
+      "A safe space for kids and teens",
+      "A meeting place for those who come home from abroad"
+    ],
+    "dreamCta": "See the project",
+    "committee": "Organizing committee",
+    "committeeLead": "Volunteer neighbors who organize the activities and report back to the community.",
+    "transparency": "Transparency",
+    "transparencyBody": "Every donation is recorded and added to the total you see on the site. Contributions are used only for the purposes described in each project, all of them non-profit.",
+    "transparencyPoints": [
+      "Every online gift is recorded instantly and shown on the donor wall, with your name or anonymously.",
+      "The donor covers the card fee, so the project receives the full amount.",
+      "Cash and bank transfers are recorded by the committee and also count toward the total.",
+      "Each project shows how the money will be used, line by line."
+    ],
+    "helpTitle": "How can you help?",
+    "help": [
+      {
+        "title": "Donate",
+        "body": "From here or from abroad, every gift counts, whatever the amount."
+      },
+      {
+        "title": "Volunteer",
+        "body": "We need organizers, volunteers and coaches for the activities."
+      },
+      {
+        "title": "Sponsor",
+        "body": "Businesses can support with sponsorships, prizes or supplies."
+      },
+      {
+        "title": "Share",
+        "body": "Send this site to your ceibero family and friends on WhatsApp."
+      }
+    ],
+    "donate": "Donate now",
+    "activities": "See activities",
+    "contact": "Message us on WhatsApp",
+    "email": "Email"
+  },
+  "footer": {
+    "made": "Made with love by and for the Tres Ceibas community.",
+    "admin": "Admin"
+  },
+  "contact": {
+    "label": "Message us on WhatsApp",
+    "withName": "Message {name} on WhatsApp",
+    "hi": "Hi {name}.",
+    "text": "I'm writing from the Tres Ceibas website.",
+    "aboutText": "I have a question about \"{about}\".",
+    "questions": "Questions about this activity?"
+  }
+}
