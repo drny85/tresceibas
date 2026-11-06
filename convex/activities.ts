@@ -4,6 +4,7 @@ import type { QueryCtx } from "./_generated/server";
 import type { Doc } from "./_generated/dataModel";
 import { requireAdmin, getAdminEmail } from "./lib/admin";
 import { activityCategory, i18nText, scheduleDay } from "./schema";
+import { TIME_RE, parseLegacyTime, toMinutes } from "./lib/time";
 
 async function withExtras(ctx: QueryCtx, a: Doc<"activities">) {
   const imageUrl = a.imageId ? await ctx.storage.getUrl(a.imageId) : null;
@@ -17,18 +18,9 @@ async function withExtras(ctx: QueryCtx, a: Doc<"activities">) {
   };
 }
 
-/** Sort key: date, then the time of day parsed from "h:mm a. m." style strings. */
-function minutes(time?: string) {
-  if (!time) return -1;
-  const m = time.toLowerCase().match(/(\d{1,2})(?::(\d{2}))?\s*([ap])?/);
-  if (!m) return -1;
-  let h = Number(m[1]) % 12;
-  if (m[3] === "p" || (!m[3] && /\bm\b/.test(time.toLowerCase()) && h === 0)) h += 12;
-  return h * 60 + Number(m[2] ?? 0);
-}
-
 export function byWhen(a: Doc<"activities">, b: Doc<"activities">) {
-  return a.startDate.localeCompare(b.startDate) || minutes(a.time) - minutes(b.time);
+  const start = (x: Doc<"activities">) => toMinutes(x.startTime ?? parseLegacyTime(x.time));
+  return a.startDate.localeCompare(b.startDate) || start(a) - start(b);
 }
 
 /** Published activities, soonest first. */
@@ -82,7 +74,8 @@ export const save = mutation({
     imageId: v.optional(v.id("_storage")),
     published: v.boolean(),
     parentId: v.optional(v.id("activities")),
-    time: v.optional(v.string()),
+    startTime: v.optional(v.string()),
+    endTime: v.optional(v.string()),
     category: v.optional(activityCategory),
     responsible: v.optional(v.string()),
   },
@@ -101,6 +94,13 @@ export const save = mutation({
       .withIndex("by_slug", (q) => q.eq("slug", slug))
       .unique();
     if (clash && clash._id !== id) throw new Error("Ya existe una actividad con ese enlace.");
+    for (const t of [fields.startTime, fields.endTime]) {
+      if (t && !TIME_RE.test(t)) throw new Error("La hora debe tener el formato HH:MM.");
+    }
+    if (fields.endTime && !fields.startTime) throw new Error("Elige la hora de inicio antes de la hora final.");
+    if (fields.startTime && fields.endTime && fields.startDate === fields.endDate && fields.endTime <= fields.startTime) {
+      throw new Error("La hora final debe ser después de la hora de inicio.");
+    }
     if (fields.parentId && fields.parentId === id) throw new Error("Una actividad no puede ser parte de sí misma.");
     if (fields.parentId) {
       const parent = await ctx.db.get(fields.parentId);
@@ -110,7 +110,8 @@ export const save = mutation({
     const data = {
       ...fields,
       slug,
-      time: fields.time?.trim() || undefined,
+      startTime: fields.startTime || undefined,
+      endTime: fields.startTime ? fields.endTime || undefined : undefined,
       responsible: fields.responsible?.trim() || undefined,
     };
     if (id) {

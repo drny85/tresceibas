@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { Church, Drum, Info, Trophy, Users } from "lucide-react";
 import { useI18n, pick } from "@/i18n/provider";
-import { formatDate } from "@/lib/format";
+import { activityTime, formatDate } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
 type Category = "cultural" | "religious" | "sports" | "community";
@@ -16,6 +16,8 @@ export type ProgramActivity = {
   startDate: string;
   endDate: string;
   time?: string;
+  startTime?: string;
+  endTime?: string;
   category?: Category;
   responsible?: string;
 };
@@ -78,9 +80,9 @@ export function ActivityProgram({ items }: { items: ProgramActivity[] }) {
               <li key={i._id}>
                 <Link
                   href={`/${locale}/actividades/${i.slug}`}
-                  className="grid grid-cols-[5.25rem_1fr] gap-x-3 gap-y-1 px-4 py-3.5 transition-colors hover:bg-muted/40 sm:grid-cols-[7rem_1fr_auto] sm:items-baseline sm:gap-4 sm:px-5"
+                  className="grid grid-cols-[6.5rem_1fr] gap-x-3 gap-y-1 px-4 py-3.5 transition-colors hover:bg-muted/40 sm:grid-cols-[9.5rem_1fr_auto] sm:items-baseline sm:gap-4 sm:px-5"
                 >
-                  <span className="tabular text-sm font-bold text-brand-red">{i.time ?? dict.activities.allDay}</span>
+                  <span className="tabular text-sm font-bold text-brand-red">{activityTime(i, locale) ?? dict.activities.allDay}</span>
                   <span className="grid gap-1">
                     <span className="font-semibold leading-snug">{pick(i.title, locale)}</span>
                     <span className="text-sm text-muted-foreground text-pretty">{pick(i.summary, locale)}</span>

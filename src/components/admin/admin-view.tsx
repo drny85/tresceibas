@@ -12,6 +12,7 @@ import { ProjectsAdmin } from "./projects-admin";
 import { ActivitiesAdmin } from "./activities-admin";
 import { CommitteeAdmin } from "./committee-admin";
 import { SettingsAdmin } from "./settings-admin";
+import { AdminSummary } from "./admin-summary";
 
 export function AdminView() {
   return clerkEnabled ? <AdminWithAuth /> : <AdminSetupNeeded />;
@@ -69,11 +70,12 @@ function AdminWithAuth() {
         <h1 className="text-3xl font-extrabold">Administración</h1>
         <UserButton />
       </div>
-      <Tabs defaultValue="donations">
+      <AdminSummary />
+      <Tabs defaultValue="activities">
         <TabsList className="w-full flex-nowrap justify-start overflow-x-auto sm:w-fit">
+          <TabsTrigger value="activities">Actividades</TabsTrigger>
           <TabsTrigger value="donations">Donaciones</TabsTrigger>
           <TabsTrigger value="projects">Proyectos</TabsTrigger>
-          <TabsTrigger value="activities">Actividades</TabsTrigger>
           <TabsTrigger value="committee">Comité</TabsTrigger>
           <TabsTrigger value="settings">Ajustes</TabsTrigger>
         </TabsList>

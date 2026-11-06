@@ -11,7 +11,7 @@ import { useI18n, pick } from "@/i18n/provider";
 import { PlaceholderImage } from "@/components/placeholder-image";
 import { Container } from "@/components/section";
 import { Button } from "@/components/ui/button";
-import { formatDateRange } from "@/lib/format";
+import { activityTime, formatDateRange } from "@/lib/format";
 import { NotFoundBlock } from "@/components/not-found-block";
 
 export function ActivityDetailView() {
@@ -50,10 +50,10 @@ export function ActivityDetailView() {
             <MapPin className="mt-0.5 size-5 text-brand-red" />
             <div><dt className="sr-only">{dict.activities.where}</dt><dd className="font-semibold">{activity.location}</dd></div>
           </div>
-          {activity.time && (
+          {activityTime(activity, locale) && (
             <div className="flex items-start gap-2">
               <Clock className="mt-0.5 size-5 text-brand-red" />
-              <div><dt className="sr-only">{dict.activities.time}</dt><dd className="font-semibold">{activity.time}</dd></div>
+              <div><dt className="sr-only">{dict.activities.time}</dt><dd className="font-semibold">{activityTime(activity, locale)}</dd></div>
             </div>
           )}
           {activity.responsible && (

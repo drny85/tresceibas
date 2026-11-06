@@ -57,7 +57,9 @@ export default defineSchema({
     published: v.boolean(),
     // Optional details for a single activity inside a larger event's program.
     parentId: v.optional(v.id("activities")),
-    time: v.optional(v.string()), // e.g. "5:00 p. m."
+    startTime: v.optional(v.string()), // 24-hour "HH:mm"; empty means all day
+    endTime: v.optional(v.string()),
+    time: v.optional(v.string()), // older free-text time, replaced by startTime
     category: v.optional(activityCategory),
     responsible: v.optional(v.string()),
   })

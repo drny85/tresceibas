@@ -17,6 +17,7 @@ import type * as files from "../files.js";
 import type * as http from "../http.js";
 import type * as lib_admin from "../lib/admin.js";
 import type * as lib_money from "../lib/money.js";
+import type * as lib_time from "../lib/time.js";
 import type * as payments from "../payments.js";
 import type * as projects from "../projects.js";
 import type * as seed from "../seed.js";
@@ -39,6 +40,7 @@ import type * as settings from "../settings.js";
 "http": typeof http,
 "lib/admin": typeof lib_admin,
 "lib/money": typeof lib_money,
+"lib/time": typeof lib_time,
 "payments": typeof payments,
 "projects": typeof projects,
 "seed": typeof seed,

@@ -42,3 +42,17 @@ export function percent(raised: number, goal: number) {
   if (!goal) return 0;
   return Math.min(100, Math.round((raised / goal) * 1000) / 10);
 }
+
+/** "16:30" → "4:30 p. m." (es) or "4:30 PM" (en). */
+export function formatTime(hhmm: string, locale: Locale) {
+  const [h, m] = hhmm.split(":").map(Number);
+  return new Intl.DateTimeFormat(tag(locale), { hour: "numeric", minute: "2-digit", timeZone: "UTC" }).format(Date.UTC(2000, 0, 1, h, m));
+}
+
+/** The time line for an activity, or null when it lasts all day. */
+export function activityTime(a: { startTime?: string; endTime?: string; time?: string }, locale: Locale) {
+  if (a.startTime) {
+    return a.endTime ? `${formatTime(a.startTime, locale)} – ${formatTime(a.endTime, locale)}` : formatTime(a.startTime, locale);
+  }
+  return a.time ?? null;
+}
