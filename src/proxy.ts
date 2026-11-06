@@ -1,5 +1,6 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse, type NextRequest } from "next/server";
+import { clerkEnabled } from "@/lib/clerk-enabled";
 import { defaultLocale, isLocale, type Locale } from "@/i18n/config";
 
 function preferredLocale(req: NextRequest): Locale {
@@ -11,7 +12,7 @@ function preferredLocale(req: NextRequest): Locale {
   return defaultLocale;
 }
 
-export default clerkMiddleware(async (_auth, req) => {
+function localeRedirect(req: NextRequest) {
   const { pathname } = req.nextUrl;
   const first = pathname.split("/")[1] ?? "";
   if (isLocale(first)) return NextResponse.next();
@@ -21,7 +22,11 @@ export default clerkMiddleware(async (_auth, req) => {
   const url = req.nextUrl.clone();
   url.pathname = `/${target}${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url);
-});
+}
+
+export default clerkEnabled
+  ? clerkMiddleware((_auth, req) => localeRedirect(req))
+  : localeRedirect;
 
 export const config = {
   matcher: [

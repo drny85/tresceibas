@@ -3,6 +3,7 @@
 import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
 import { useConvexAuth, useQuery } from "convex/react";
 import { api } from "@convex/_generated/api";
+import { clerkEnabled } from "@/lib/clerk-enabled";
 import { Container } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,6 +14,22 @@ import { CommitteeAdmin } from "./committee-admin";
 import { SettingsAdmin } from "./settings-admin";
 
 export function AdminView() {
+  return clerkEnabled ? <AdminWithAuth /> : <AdminSetupNeeded />;
+}
+
+function AdminSetupNeeded() {
+  return (
+    <Container className="grid max-w-lg justify-items-start gap-4 py-16">
+      <h1 className="text-3xl font-extrabold">Administración</h1>
+      <p className="text-muted-foreground">
+        Falta conectar Clerk para poder entrar. Agrega NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY y CLERK_SECRET_KEY en .env.local
+        (ver README) y reinicia el sitio.
+      </p>
+    </Container>
+  );
+}
+
+function AdminWithAuth() {
   const { isLoading, isAuthenticated } = useConvexAuth();
   const me = useQuery(api.admin.me, isAuthenticated ? {} : "skip");
 
