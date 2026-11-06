@@ -430,9 +430,9 @@ function ActivityForm({ initial, onDone }: { initial: Draft; onDone: () => void 
                   </div>
                 </Field>
               </div>
-              <BilingualField id="a-title" label="Título" value={d.title} onChange={(title) => set({ title })} />
-              <BilingualField id="a-summary" label="Resumen corto (una o dos líneas)" value={d.summary} onChange={(summary) => set({ summary })} />
-              <BilingualField id="a-description" label="Descripción completa (opcional)" value={d.description} onChange={(description) => set({ description })} multiline />
+              <BilingualField id="a-title" label="Título" value={d.title} onChange={(title) => set({ title })} placeholder={{ es: "Ej.: Torneo de dominó", en: "E.g. Dominoes tournament" }} />
+              <BilingualField id="a-summary" label="Resumen corto (una o dos líneas)" value={d.summary} onChange={(summary) => set({ summary })} placeholder={{ es: "Ej.: Partidas por parejas para todas las edades.", en: "E.g. Doubles games for all ages." }} />
+              <BilingualField id="a-description" label="Descripción completa (opcional)" value={d.description} onChange={(description) => set({ description })} multiline placeholder={{ es: "Cuenta qué se hará, para quién es, qué traer y cómo participar. Ej.: Inscripciones en la cancha desde las 2:00 p. m. Premios para las tres primeras parejas.", en: "What will happen, who it is for, what to bring and how to join. E.g. Sign up at the court from 2:00 PM. Prizes for the top three pairs." }} />
             </section>
 
             <section className="grid gap-4">
@@ -465,9 +465,9 @@ function ActivityForm({ initial, onDone }: { initial: Draft; onDone: () => void 
             <section className="grid gap-4">
               <h3 className="font-display text-lg font-bold">¿Dónde y quién?</h3>
               <div className="grid gap-4 md:grid-cols-2">
-                <Field label="Lugar" htmlFor="a-location"><Input id="a-location" value={d.location} onChange={(e) => set({ location: e.target.value })} /></Field>
+                <Field label="Lugar" htmlFor="a-location"><Input id="a-location" value={d.location} onChange={(e) => set({ location: e.target.value })} placeholder={DEFAULT_LOCATION} /></Field>
                 <Field label="Responsable (opcional)" htmlFor="a-responsible">
-                  <Input id="a-responsible" list="a-responsible-list" value={d.responsible} onChange={(e) => set({ responsible: e.target.value })} placeholder="Comité deportivo" />
+                  <Input id="a-responsible" list="a-responsible-list" value={d.responsible} onChange={(e) => set({ responsible: e.target.value })} placeholder="Ej.: Comité deportivo" />
                   <datalist id="a-responsible-list">
                     {["Comité organizador", "Comité deportivo", "Comité cultural", "Comité religioso", "Encargada de Cultura", "Entrenadores"].map((r) => <option key={r} value={r} />)}
                   </datalist>

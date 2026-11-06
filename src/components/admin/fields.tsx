@@ -39,12 +39,15 @@ export function BilingualField({
   value,
   onChange,
   multiline = false,
+  placeholder,
 }: {
   id: string;
   label: string;
   value: I18nText;
   onChange: (v: I18nText) => void;
   multiline?: boolean;
+  /** Example text for each language, shown while the field is empty. */
+  placeholder?: I18nText;
 }) {
   const Comp = multiline ? Textarea : Input;
   return (
@@ -58,6 +61,7 @@ export function BilingualField({
               id={`${id}-${l}`}
               aria-label={`${label} (${l === "es" ? "español" : "inglés"})`}
               value={value[l]}
+              placeholder={placeholder?.[l]}
               onChange={(e: React.ChangeEvent<HTMLInputElement & HTMLTextAreaElement>) => onChange({ ...value, [l]: e.target.value })}
               className={multiline ? "min-h-32 pr-10" : "pr-10"}
             />

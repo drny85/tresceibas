@@ -107,9 +107,9 @@ function ProjectForm({ initial, onDone }: { initial: Draft; onDone: () => void }
       </CardHeader>
       <CardContent>
         <form onSubmit={submit} className="grid gap-5">
-          <BilingualField id="p-title" label="Título" value={d.title} onChange={(v) => set("title", v)} />
-          <BilingualField id="p-summary" label="Resumen corto" value={d.summary} onChange={(v) => set("summary", v)} />
-          <BilingualField id="p-description" label="Descripción" value={d.description} onChange={(v) => set("description", v)} multiline />
+          <BilingualField id="p-title" label="Título" value={d.title} onChange={(v) => set("title", v)} placeholder={{ es: "Ej.: Terreno para el club comunitario", en: "E.g. Land for the community club" }} />
+          <BilingualField id="p-summary" label="Resumen corto" value={d.summary} onChange={(v) => set("summary", v)} placeholder={{ es: "Ej.: Compramos el terreno donde construiremos nuestro club.", en: "E.g. We are buying the land where we will build our club." }} />
+          <BilingualField id="p-description" label="Descripción" value={d.description} onChange={(v) => set("description", v)} multiline placeholder={{ es: "Explica para qué es el dinero, cuánto hace falta y qué cambiará en la comunidad.", en: "Explain what the money is for, how much is needed and what will change for the community." }} />
           <div className="grid gap-4 md:grid-cols-3">
             <Field label="Meta (RD$)" htmlFor="p-goal">
               <Input id="p-goal" inputMode="numeric" value={d.goal} onChange={(e) => set("goal", e.target.value)} placeholder="2,000,000" />
@@ -159,7 +159,7 @@ function ProjectForm({ initial, onDone }: { initial: Draft; onDone: () => void }
               </div>
               <div className="flex items-center gap-2">
                 <Label htmlFor="p-order">Orden</Label>
-                <Input id="p-order" className="w-20" inputMode="numeric" value={d.order} onChange={(e) => set("order", e.target.value)} />
+                <Input id="p-order" className="w-20" inputMode="numeric" placeholder="1" value={d.order} onChange={(e) => set("order", e.target.value)} />
               </div>
             </div>
             <Button type="submit" disabled={busy}>Guardar proyecto</Button>
