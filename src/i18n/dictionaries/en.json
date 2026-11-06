@@ -130,11 +130,91 @@
   },
   "about": {
     "title": "About us",
+    "eyebrow": "Villa Magante, Dominican Republic",
     "lead": "Tres Ceibas is a community in Villa Magante, Dominican Republic, with many of its sons and daughters living abroad.",
-    "body": "We organize to bring people together and strengthen our cultural, religious and sports traditions. Since we have no recreation space of our own today, we want to buy land for a community club, where young people and families can gather in a healthy environment.",
+    "storyTitle": "One community, here and abroad",
+    "story": [
+      "Tres Ceibas is a rural community of families who have known each other all their lives. We grew up playing on the court, going to church and celebrating every festivity together.",
+      "Over time, many of our children moved abroad, but they never stopped feeling like ceiberos. Every visit, every call and every contribution from afar keeps the bond with home alive.",
+      "Today we are organizing to give the community something it lacks: a place of its own where young people and families can gather in a healthy environment."
+    ],
+    "stats": [
+      {
+        "value": "RD$2M",
+        "label": "goal to buy the land for the club"
+      },
+      {
+        "value": "6",
+        "label": "organizing committee members"
+      },
+      {
+        "value": "3",
+        "label": "days of activities in February 2027"
+      }
+    ],
+    "missionTitle": "Our purpose",
+    "mission": "To strengthen community ties through cultural, religious and sports activities in Tres Ceibas.",
+    "goalsTitle": "What we aim for",
+    "goals": [
+      {
+        "title": "Cultural identity",
+        "body": "Keep our traditions alive with typical music, dance, local crafts and the food fair."
+      },
+      {
+        "title": "Sports",
+        "body": "Encourage sports with basketball tournaments, track events, walks and games for kids."
+      },
+      {
+        "title": "Youth",
+        "body": "Bring young people into healthy activities that build peaceful coexistence."
+      },
+      {
+        "title": "Faith and values",
+        "body": "Nurture spiritual values together with our church, with a community mass and moments of unity."
+      }
+    ],
+    "dreamTitle": "The dream: our community club",
+    "dreamBody": "Today we have no recreation spaces of our own. That is why we are raising funds to buy the land for the Tres Ceibas community club: a place for sports, culture, family gatherings and celebrations for the whole community.",
+    "dreamPoints": [
+      "Court and sports area",
+      "Hall for events and meetings",
+      "A safe space for kids and teens",
+      "A meeting place for those who come home from abroad"
+    ],
+    "dreamCta": "See the project",
     "committee": "Organizing committee",
+    "committeeLead": "Volunteer neighbors who organize the activities and report back to the community.",
     "transparency": "Transparency",
-    "transparencyBody": "Every donation is recorded and added to the total you see on this site. Gifts are used only for the purposes described in each project, which are non-profit."
+    "transparencyBody": "Every donation is recorded and added to the total you see on the site. Contributions are used only for the purposes described in each project, all of them non-profit.",
+    "transparencyPoints": [
+      "Every online gift is recorded instantly and shown on the donor wall, with your name or anonymously.",
+      "The donor covers the card fee, so the project receives the full amount.",
+      "Cash and bank transfers are recorded by the committee and also count toward the total.",
+      "Each project shows how the money will be used, line by line."
+    ],
+    "helpTitle": "How can you help?",
+    "help": [
+      {
+        "title": "Donate",
+        "body": "From here or from abroad, every gift counts, whatever the amount."
+      },
+      {
+        "title": "Volunteer",
+        "body": "We need organizers, volunteers and coaches for the activities."
+      },
+      {
+        "title": "Sponsor",
+        "body": "Businesses can support with sponsorships, prizes or supplies."
+      },
+      {
+        "title": "Share",
+        "body": "Send this site to your ceibero family and friends on WhatsApp."
+      }
+    ],
+    "donate": "Donate now",
+    "activities": "See activities",
+    "contact": "Message us on WhatsApp",
+    "email": "Email"
   },
   "footer": {
     "made": "Made with love by and for the Tres Ceibas community.",

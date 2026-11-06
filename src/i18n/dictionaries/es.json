@@ -130,11 +130,91 @@
   },
   "about": {
     "title": "Nosotros",
+    "eyebrow": "Villa Magante, República Dominicana",
     "lead": "Tres Ceibas es una comunidad de Villa Magante, en la República Dominicana, con muchos de sus hijos viviendo en el exterior.",
-    "body": "Nos organizamos para promover la integración social y fortalecer nuestros valores culturales, religiosos y deportivos. Como hoy no tenemos espacios propios de recreación, queremos comprar un terreno para el club comunitario, donde los jóvenes y las familias puedan reunirse en un ambiente sano.",
+    "storyTitle": "Una comunidad unida, aquí y afuera",
+    "story": [
+      "Tres Ceibas es un campo de familias que se conocen de toda la vida. Aquí crecimos jugando en la cancha, yendo a la iglesia y celebrando juntos cada fiesta del año.",
+      "Con el tiempo, muchos de nuestros hijos se fueron a vivir al exterior, pero nunca dejaron de sentirse ceiberos. Cada visita, cada llamada y cada aporte desde afuera mantiene viva la conexión con el campo.",
+      "Hoy nos organizamos para darle a la comunidad algo que nos falta: un espacio propio donde los jóvenes y las familias puedan reunirse en un ambiente sano."
+    ],
+    "stats": [
+      {
+        "value": "RD$2M",
+        "label": "meta para comprar el terreno del club"
+      },
+      {
+        "value": "6",
+        "label": "miembros del comité organizador"
+      },
+      {
+        "value": "3",
+        "label": "días de actividades en febrero de 2027"
+      }
+    ],
+    "missionTitle": "Nuestro propósito",
+    "mission": "Fortalecer la integración comunitaria mediante actividades culturales, religiosas y deportivas en Tres Ceibas.",
+    "goalsTitle": "Lo que buscamos",
+    "goals": [
+      {
+        "title": "Identidad cultural",
+        "body": "Rescatar nuestras tradiciones con música típica, baile, artesanía local y la feria gastronómica."
+      },
+      {
+        "title": "Deporte",
+        "body": "Incentivar el deporte con torneos de baloncesto, atletismo, caminatas y juegos para los niños."
+      },
+      {
+        "title": "Juventud",
+        "body": "Integrar a los jóvenes en actividades sanas que fomenten la convivencia pacífica."
+      },
+      {
+        "title": "Fe y valores",
+        "body": "Fomentar los valores espirituales junto a nuestra iglesia, con misa comunitaria y momentos de unión."
+      }
+    ],
+    "dreamTitle": "El sueño: nuestro club comunitario",
+    "dreamBody": "Hoy no tenemos espacios propios de recreación. Por eso estamos recaudando fondos para comprar el terreno donde se levantará el club comunitario de Tres Ceibas: un lugar para el deporte, la cultura, las reuniones familiares y las celebraciones de todo el campo.",
+    "dreamPoints": [
+      "Cancha y área deportiva",
+      "Salón para actividades y reuniones",
+      "Espacio seguro para niños y jóvenes",
+      "Lugar de encuentro para quienes vuelven del exterior"
+    ],
+    "dreamCta": "Ver el proyecto",
     "committee": "Comité organizador",
+    "committeeLead": "Vecinos voluntarios que organizan las actividades y rinden cuentas a la comunidad.",
     "transparency": "Transparencia",
-    "transparencyBody": "Cada donación queda registrada y se suma al total que ves en el sitio. Los aportes se usan exclusivamente para los fines descritos en cada proyecto, que son sin fines de lucro."
+    "transparencyBody": "Cada donación queda registrada y se suma al total que ves en el sitio. Los aportes se usan exclusivamente para los fines descritos en cada proyecto, que son sin fines de lucro.",
+    "transparencyPoints": [
+      "Cada aporte en línea se registra al instante y aparece en el muro de donantes, con nombre o de forma anónima.",
+      "El donante cubre la comisión de la tarjeta, así el proyecto recibe el monto completo.",
+      "Los aportes en efectivo o por transferencia los registra el comité y también suman al total.",
+      "Cada proyecto muestra en qué se usará el dinero, partida por partida."
+    ],
+    "helpTitle": "¿Cómo puedes ayudar?",
+    "help": [
+      {
+        "title": "Dona",
+        "body": "Desde aquí o desde el exterior, cada aporte cuenta, sin importar el monto."
+      },
+      {
+        "title": "Sé voluntario",
+        "body": "Necesitamos organizadores, voluntarios y entrenadores para las actividades."
+      },
+      {
+        "title": "Patrocina",
+        "body": "Empresarios y negocios pueden apoyar con patrocinios, premios o materiales."
+      },
+      {
+        "title": "Comparte",
+        "body": "Envía este sitio a tu familia y amigos ceiberos por WhatsApp."
+      }
+    ],
+    "donate": "Donar ahora",
+    "activities": "Ver actividades",
+    "contact": "Escríbenos por WhatsApp",
+    "email": "Correo"
   },
   "footer": {
     "made": "Hecho con cariño por y para la comunidad de Tres Ceibas.",

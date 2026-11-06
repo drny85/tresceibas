@@ -13,7 +13,7 @@ export default async function AboutPage({ params }: PageProps<"/[lang]/nosotros"
   const { dict } = await dictFor(params);
   return (
     <>
-      <PageHeader title={dict.about.title} lead={dict.about.lead} />
+      <PageHeader eyebrow={dict.about.eyebrow} title={dict.about.title} lead={dict.about.lead} />
       <Suspense>
         <AboutView />
       </Suspense>
