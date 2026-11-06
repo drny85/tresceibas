@@ -17,7 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { formatDop, formatUsd } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
-const PRESETS = [25, 50, 100, 250, 500];
+const PRESETS = [10, 25, 50, 100, 250];
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 
 type Method = "stripe" | "paypal";
