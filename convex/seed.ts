@@ -92,7 +92,7 @@ export const run = internalMutation({
 
     const members: [string, string, string][] = [
       ["Griselda Polanco Vásquez", "Encargada de Cultura", "Culture"],
-      ["Belarmino Meléndez", "Representante en el exterior", "Representative abroad"],
+      ["Robert Meléndez", "Representante en el exterior", "Representative abroad"],
       ["Juan José Ventura (Blanco)", "Enlace comunitario", "Community liaison"],
       ["Adán Polanco", "Deporte", "Sports"],
       ["Marcos Espaillat", "Deporte", "Sports"],
