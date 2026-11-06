@@ -1,6 +1,6 @@
 "use client";
 
-import { useQuery } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { api } from "@convex/_generated/api";
 import { useI18n } from "@/i18n/provider";
 import { ProjectCard } from "@/components/project-card";

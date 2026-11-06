@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useQuery } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";
 import { PlaceholderImage } from "@/components/placeholder-image";

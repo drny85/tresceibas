@@ -2,13 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useQuery } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { Check, Church, Drum, HandCoins, HandHeart, Handshake, Heart, MessageCircle, Share2, Sprout, Trophy } from "lucide-react";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";
 import { Container } from "@/components/section";
 import { Button } from "@/components/ui/button";
-import { useMounted } from "@/hooks/use-mounted";
 
 const GOAL_ICONS = [Drum, Trophy, Sprout, Church];
 const HELP_ICONS = [HandCoins, HandHeart, Handshake, Share2];
@@ -17,10 +16,7 @@ export function AboutView() {
   const { locale, dict } = useI18n();
   const t = dict.about;
   const committee = useQuery(api.committee.list);
-  // Links use live data only after hydration, so server and client HTML match.
-  const mounted = useMounted();
-  const live = useQuery(api.projects.featured);
-  const featured = mounted ? live : undefined;
+  const featured = useQuery(api.projects.featured);
   const settings = useQuery(api.settings.get);
   const whatsapp = settings?.whatsapp?.replace(/\D/g, "");
   const projectHref = featured ? `/${locale}/proyectos/${featured.slug}` : `/${locale}/proyectos`;

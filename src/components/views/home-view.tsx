@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useQuery } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { ArrowRight } from "lucide-react";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";

@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useAction, useQuery } from "convex/react";
+import { useAction } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { CreditCard, Lock, Loader2, Wallet } from "lucide-react";
 import { api } from "@convex/_generated/api";

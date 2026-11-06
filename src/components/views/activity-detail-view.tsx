@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useQuery } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { CalendarDays, Clock, MapPin, HeartHandshake, UserRound, ArrowLeft } from "lucide-react";
 import { ActivityProgram, CategoryBadge } from "@/components/activity-program";
 import { api } from "@convex/_generated/api";

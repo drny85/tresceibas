@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useQuery } from "convex/react";
+import { useQuery } from "@/hooks/use-live-query";
 import { CheckCircle2, Clock, XCircle, MessageCircle } from "lucide-react";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick, fill } from "@/i18n/provider";
