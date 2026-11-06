@@ -4,7 +4,7 @@ import { useQuery } from "@/hooks/use-live-query";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";
 import { ActivityCard } from "@/components/activity-card";
-import { ActivityProgram } from "@/components/activity-program";
+import { ActivityProgram, ScheduleDisclaimer } from "@/components/activity-program";
 import { Container } from "@/components/section";
 
 export function ActivitiesView() {
@@ -26,6 +26,7 @@ export function ActivitiesView() {
 
   return (
     <Container className="grid gap-12">
+      <ScheduleDisclaimer />
       {events.map((ev) => {
         const program = activities.filter((a) => a.parentId === ev._id);
         return (

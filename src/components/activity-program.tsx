@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Church, Drum, Trophy, Users } from "lucide-react";
+import { Church, Drum, Info, Trophy, Users } from "lucide-react";
 import { useI18n, pick } from "@/i18n/provider";
 import { formatDate } from "@/lib/format";
 import { cn } from "@/lib/utils";
@@ -95,5 +95,16 @@ export function ActivityProgram({ items }: { items: ProgramActivity[] }) {
         </section>
       ))}
     </div>
+  );
+}
+
+/** Reminder that the program can still change. */
+export function ScheduleDisclaimer() {
+  const { dict } = useI18n();
+  return (
+    <p role="note" className="flex items-start gap-2.5 rounded-xl border border-brand-gold/40 bg-brand-gold/10 p-3.5 text-sm text-pretty">
+      <Info className="mt-0.5 size-4 shrink-0 text-brand-gold" aria-hidden />
+      <span>{dict.activities.disclaimer}</span>
+    </p>
   );
 }

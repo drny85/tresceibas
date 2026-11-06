@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useQuery } from "@/hooks/use-live-query";
 import { CalendarDays, Clock, MapPin, HeartHandshake, UserRound, ArrowLeft } from "lucide-react";
-import { ActivityProgram, CategoryBadge } from "@/components/activity-program";
+import { ActivityProgram, CategoryBadge, ScheduleDisclaimer } from "@/components/activity-program";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";
 import { PlaceholderImage } from "@/components/placeholder-image";
@@ -63,6 +63,7 @@ export function ActivityDetailView() {
             </div>
           )}
         </dl>
+        <ScheduleDisclaimer />
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
