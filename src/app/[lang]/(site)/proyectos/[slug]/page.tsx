@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { RequestTime } from "@/components/request-time";
 import { ProjectDetailView } from "@/components/views/project-detail-view";
 import { loadProject } from "@/lib/server-data";
 import { isLocale } from "@/i18n/config";
@@ -20,8 +21,13 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/proyectos/
 
 export default function ProjectPage() {
   return (
-    <Suspense>
-      <ProjectDetailView />
-    </Suspense>
+    <>
+      <Suspense>
+        <ProjectDetailView />
+      </Suspense>
+      <Suspense>
+        <RequestTime />
+      </Suspense>
+    </>
   );
 }

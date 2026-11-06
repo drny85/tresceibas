@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import { RequestTime } from "@/components/request-time";
 import { ActivityDetailView } from "@/components/views/activity-detail-view";
 import { loadActivity } from "@/lib/server-data";
 import { isLocale } from "@/i18n/config";
@@ -16,8 +17,13 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/actividade
 
 export default function ActivityPage() {
   return (
-    <Suspense>
-      <ActivityDetailView />
-    </Suspense>
+    <>
+      <Suspense>
+        <ActivityDetailView />
+      </Suspense>
+      <Suspense>
+        <RequestTime />
+      </Suspense>
+    </>
   );
 }
