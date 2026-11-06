@@ -35,7 +35,7 @@ export function DonateView() {
 
   const active = useMemo(() => (projects ?? []).filter((p) => p.status === "active"), [projects]);
   const [slug, setSlug] = useState<string | null>(search.get("proyecto"));
-  const [preset, setPreset] = useState<number | null>(50);
+  const [preset, setPreset] = useState<number | null>(25);
   const [custom, setCustom] = useState("");
   const [name, setName] = useState("");
   const [anonymous, setAnonymous] = useState(false);
