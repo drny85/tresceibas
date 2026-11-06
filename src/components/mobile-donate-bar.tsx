@@ -8,6 +8,7 @@ import { api } from "@convex/_generated/api";
 import { useI18n } from "@/i18n/provider";
 import { Button } from "@/components/ui/button";
 import { formatDop, percent } from "@/lib/format";
+import { useMounted } from "@/hooks/use-mounted";
 
 /**
  * Phone-only bar pinned to the bottom of the screen, so the donate button is
@@ -16,7 +17,10 @@ import { formatDop, percent } from "@/lib/format";
 export function MobileDonateBar() {
   const { locale, dict } = useI18n();
   const pathname = usePathname() ?? "";
-  const featured = useQuery(api.projects.featured);
+  // Live data can be cached in the browser before hydration; wait to avoid a mismatch.
+  const mounted = useMounted();
+  const live = useQuery(api.projects.featured);
+  const featured = mounted ? live : undefined;
   const rest = pathname.replace(/^\/(es|en)/, "");
   if (rest.startsWith("/donar") || rest.startsWith("/admin")) return null;
 
