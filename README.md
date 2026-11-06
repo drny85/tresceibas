@@ -20,42 +20,44 @@ Community site for Tres Ceibas: projects, activities, online donations and a don
 
 ## Setup
 
+This project uses [Bun](https://bun.sh) (`curl -fsSL https://bun.sh/install | bash`).
+
 ```bash
-npm install
+bun install
 cp .env.example .env.local
 
 # 1. Convex: creates the deployment, fills NEXT_PUBLIC_CONVEX_URL and regenerates convex/_generated
-npx convex dev
+bunx convex dev
 
 # 2. Clerk: create an app, enable the Convex integration (JWT template "convex"),
 #    copy the keys into .env.local, then tell Convex the issuer:
-npx convex env set CLERK_JWT_ISSUER_DOMAIN https://<your-app>.clerk.accounts.dev
-npx convex env set ADMIN_EMAILS "you@example.com,committee@example.com"
-npx convex env set SITE_URL http://localhost:3000
+bunx convex env set CLERK_JWT_ISSUER_DOMAIN https://<your-app>.clerk.accounts.dev
+bunx convex env set ADMIN_EMAILS "you@example.com,committee@example.com"
+bunx convex env set SITE_URL http://localhost:3000
 
 # 3. Stripe (account in the organizer's name)
-npx convex env set STRIPE_SECRET_KEY sk_test_...
+bunx convex env set STRIPE_SECRET_KEY sk_test_...
 #    Webhook endpoint: https://<deployment>.convex.site/stripe/webhook
 #    Events: checkout.session.completed, checkout.session.async_payment_succeeded,
 #            checkout.session.async_payment_failed, checkout.session.expired
-npx convex env set STRIPE_WEBHOOK_SECRET whsec_...
+bunx convex env set STRIPE_WEBHOOK_SECRET whsec_...
 
 # 4. PayPal (optional)
-npx convex env set PAYPAL_CLIENT_ID ...
-npx convex env set PAYPAL_CLIENT_SECRET ...
-#    For live payments: npx convex env set PAYPAL_API_BASE https://api-m.paypal.com
+bunx convex env set PAYPAL_CLIENT_ID ...
+bunx convex env set PAYPAL_CLIENT_SECRET ...
+#    For live payments: bunx convex env set PAYPAL_API_BASE https://api-m.paypal.com
 
 # 5. Sample content: the land project (RD$2,000,000), the Feb 2027 event and the committee
-npx convex run seed:run
+bunx convex run seed:run
 
-npm run dev
+bun run dev
 ```
 
 Open http://localhost:3000. Visitors are sent to `/es` or `/en` by their browser language. The admin lives at `/es/admin`.
 
 ## Deploying
 
-Deploy to Vercel. Set the build command to `npx convex deploy --cmd 'npm run build'` and add `CONVEX_DEPLOY_KEY` plus the Clerk and PayPal public variables. Set `SITE_URL` in the production Convex deployment to the real domain and create a live Stripe webhook pointing at the production `.convex.site` URL.
+Deploy to Vercel. Set the build command to `bunx convex deploy --cmd 'bun run build'` and add `CONVEX_DEPLOY_KEY` plus the Clerk and PayPal public variables. Set `SITE_URL` in the production Convex deployment to the real domain and create a live Stripe webhook pointing at the production `.convex.site` URL.
 
 ## Project layout
 
