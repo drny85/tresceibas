@@ -8,6 +8,7 @@ import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";
 import { Container } from "@/components/section";
 import { Button } from "@/components/ui/button";
+import { useMounted } from "@/hooks/use-mounted";
 
 const GOAL_ICONS = [Drum, Trophy, Sprout, Church];
 const HELP_ICONS = [HandCoins, HandHeart, Handshake, Share2];
@@ -16,7 +17,10 @@ export function AboutView() {
   const { locale, dict } = useI18n();
   const t = dict.about;
   const committee = useQuery(api.committee.list);
-  const featured = useQuery(api.projects.featured);
+  // Links use live data only after hydration, so server and client HTML match.
+  const mounted = useMounted();
+  const live = useQuery(api.projects.featured);
+  const featured = mounted ? live : undefined;
   const settings = useQuery(api.settings.get);
   const whatsapp = settings?.whatsapp?.replace(/\D/g, "");
   const projectHref = featured ? `/${locale}/proyectos/${featured.slug}` : `/${locale}/proyectos`;
@@ -34,7 +38,7 @@ export function AboutView() {
         </section>
         <dl className="grid grid-cols-3 gap-2 rounded-2xl border border-border bg-card p-4 sm:gap-4 sm:p-6 lg:grid-cols-1">
           {t.stats.map((s) => (
-            <div key={s.label} className="grid content-start gap-1 lg:grid-cols-[6rem_1fr] lg:items-baseline lg:gap-4">
+            <div key={s.label} className="grid content-start gap-1 lg:grid-cols-[8.5rem_1fr] lg:items-baseline lg:gap-4">
               <dt className="sr-only">{s.label}</dt>
               <dd className="tabular font-display text-2xl font-extrabold text-primary sm:text-4xl">{s.value}</dd>
               <dd className="text-xs leading-snug text-muted-foreground sm:text-sm">{s.label}</dd>
