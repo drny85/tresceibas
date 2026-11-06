@@ -20,6 +20,15 @@ export const scheduleDay = v.object({
   ),
 });
 
+export const donationStatus = v.union(
+  v.literal("pending"),
+  v.literal("paid"),
+  v.literal("failed"),
+  v.literal("refunded"), // money returned; no longer counts
+  v.literal("test"), // a trial payment; never counts
+);
+export const tribute = v.object({ kind: v.union(v.literal("honor"), v.literal("memory")), name: v.string() });
+
 export const activityCategory = v.union(
   v.literal("cultural"),
   v.literal("religious"),
@@ -85,7 +94,10 @@ export default defineSchema({
       v.literal("cash"),
       v.literal("transfer"),
     ),
-    status: v.union(v.literal("pending"), v.literal("paid"), v.literal("failed")),
+    status: donationStatus,
+    // "En honor de" or "en memoria de" someone, shown on the donor wall.
+    tribute: v.optional(tribute),
+    excludedNote: v.optional(v.string()), // why an admin marked it as test or refunded
     externalId: v.optional(v.string()),
     hideMessage: v.boolean(),
     paidAt: v.optional(v.number()),
@@ -112,6 +124,7 @@ export default defineSchema({
       }),
     ),
     whatsapp: v.optional(v.string()),
+    whatsappName: v.optional(v.string()), // who answers that WhatsApp
     contactEmail: v.optional(v.string()),
   }).index("by_key", ["key"]),
 });

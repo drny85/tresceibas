@@ -3,6 +3,7 @@ import { query, mutation, internalMutation, internalQuery } from "./_generated/s
 import type { Doc } from "./_generated/dataModel";
 import { requireAdmin } from "./lib/admin";
 import { readSettings } from "./settings";
+import { donationStatus, tribute } from "./schema";
 import { coverFee, round2, roundDop } from "./lib/money";
 
 /** The fields of a donation that anyone may see. Email and ids stay private. */
@@ -15,6 +16,7 @@ function publicView(d: Doc<"donations">) {
     currency: d.currency,
     amountDop: d.amountDop,
     message: d.hideMessage ? null : (d.message ?? null),
+    tribute: d.tribute ?? null,
     paidAt: d.paidAt ?? d._creationTime,
   };
 }
@@ -78,6 +80,7 @@ export const createPending = internalMutation({
     anonymous: v.boolean(),
     message: v.optional(v.string()),
     email: v.optional(v.string()),
+    tribute: v.optional(tribute),
     amountUsd: v.number(),
     method: v.union(v.literal("stripe"), v.literal("paypal")),
   },
@@ -93,6 +96,7 @@ export const createPending = internalMutation({
       ...rest,
       donorName: rest.donorName?.trim().slice(0, 80) || undefined,
       message: rest.message?.trim().slice(0, 280) || undefined,
+      tribute: rest.tribute?.name.trim() ? { kind: rest.tribute.kind, name: rest.tribute.name.trim().slice(0, 80) } : undefined,
       amount: netUsd,
       feeUsd,
       chargedUsd,
@@ -155,7 +159,7 @@ export const markFailed = internalMutation({
 // ---------- admin ----------
 
 export const listAll = query({
-  args: { status: v.optional(v.union(v.literal("pending"), v.literal("paid"), v.literal("failed"))) },
+  args: { status: v.optional(donationStatus) },
   handler: async (ctx, { status }) => {
     await requireAdmin(ctx);
     const rows = status
@@ -197,6 +201,21 @@ export const addManual = mutation({
       hideMessage: false,
       recordedBy: admin,
     });
+  },
+});
+
+/**
+ * Take a paid donation out of the totals (a test or a refund), or put it back.
+ * Nothing is deleted, so the record stays.
+ */
+export const setExcluded = mutation({
+  args: { id: v.id("donations"), as: v.union(v.literal("refunded"), v.literal("test"), v.literal("paid")), note: v.optional(v.string()) },
+  handler: async (ctx, { id, as, note }) => {
+    await requireAdmin(ctx);
+    const d = await ctx.db.get(id);
+    if (!d) throw new Error("No encontramos esta donación.");
+    if (d.status === "pending" || d.status === "failed") throw new Error("Solo se pueden marcar donaciones pagadas.");
+    await ctx.db.patch(id, { status: as, excludedNote: as === "paid" ? undefined : note?.trim().slice(0, 200) || undefined });
   },
 });
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useQuery } from "@/hooks/use-live-query";
-import { Heart } from "lucide-react";
+import { Flower2, Heart, Sparkles } from "lucide-react";
 import { api } from "@convex/_generated/api";
 import type { Id } from "@convex/_generated/dataModel";
 import { useI18n, pick } from "@/i18n/provider";
@@ -15,6 +15,7 @@ type Row = {
   currency: "USD" | "DOP";
   amountDop: number;
   message: string | null;
+  tribute?: { kind: "honor" | "memory"; name: string } | null;
   paidAt: number;
   project?: { slug: string; title: { es: string; en: string } } | null;
 };
@@ -66,6 +67,12 @@ export function DonorList({ rows, empty, showProject = false }: { rows: Row[] | 
                 )}
               </p>
             </div>
+            {d.tribute && (
+              <p className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-gold/15 px-2.5 py-0.5 text-xs font-semibold text-foreground">
+                {d.tribute.kind === "memory" ? <Flower2 className="size-3.5" /> : <Sparkles className="size-3.5" />}
+                {d.tribute.kind === "memory" ? dict.donate.inMemory : dict.donate.inHonor} {d.tribute.name}
+              </p>
+            )}
             {d.message && <p className="text-sm text-pretty">“{d.message}”</p>}
             <p className="text-xs text-muted-foreground">
               {formatRelative(d.paidAt, locale)}

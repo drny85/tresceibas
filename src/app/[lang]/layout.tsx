@@ -30,6 +30,8 @@ export async function generateMetadata({
   if (!isLocale(lang)) return {};
   const dict = await getDictionary(lang);
   return {
+    // Link previews need absolute image URLs; set NEXT_PUBLIC_SITE_URL to the real domain when going live.
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3001"),
     title: { default: dict.meta.title, template: `%s · Tres Ceibas` },
     description: dict.meta.description,
     icons: { icon: "/brand/logo-icon.svg" },

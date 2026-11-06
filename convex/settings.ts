@@ -4,6 +4,9 @@ import type { QueryCtx } from "./_generated/server";
 import { requireAdmin } from "./lib/admin";
 import { DEFAULT_FEES, DEFAULT_USD_TO_DOP } from "./lib/money";
 
+const DEFAULT_WHATSAPP = "809-512-9949";
+const DEFAULT_WHATSAPP_NAME = "Griselda";
+
 export async function readSettings(ctx: QueryCtx) {
   const doc = await ctx.db
     .query("settings")
@@ -12,7 +15,11 @@ export async function readSettings(ctx: QueryCtx) {
   return {
     usdToDop: doc?.usdToDop ?? DEFAULT_USD_TO_DOP,
     fees: doc?.fees ?? DEFAULT_FEES,
-    whatsapp: doc?.whatsapp ?? null,
+    // Griselda Polanco (committee) answers the community WhatsApp unless changed in Ajustes.
+    whatsapp: doc ? (doc.whatsapp ?? null) : DEFAULT_WHATSAPP,
+    whatsappName:
+      doc?.whatsappName ??
+      (!doc || doc.whatsapp?.replace(/\D/g, "").endsWith(DEFAULT_WHATSAPP.replace(/\D/g, "")) ? DEFAULT_WHATSAPP_NAME : null),
     contactEmail: doc?.contactEmail ?? null,
   };
 }
@@ -28,6 +35,7 @@ export const update = mutation({
       paypal: v.object({ percent: v.number(), fixedUsd: v.number() }),
     }),
     whatsapp: v.optional(v.string()),
+    whatsappName: v.optional(v.string()),
     contactEmail: v.optional(v.string()),
   },
   handler: async (ctx, args) => {
@@ -42,7 +50,16 @@ export const update = mutation({
       .query("settings")
       .withIndex("by_key", (q) => q.eq("key", "main"))
       .unique();
-    if (doc) await ctx.db.patch(doc._id, args);
-    else await ctx.db.insert("settings", { key: "main", ...args });
+    const clean = {
+      ...args,
+      whatsapp: args.whatsapp?.trim() || undefined,
+      whatsappName: args.whatsappName?.trim() || undefined,
+      contactEmail: args.contactEmail?.trim() || undefined,
+    };
+    if (clean.whatsapp && clean.whatsapp.replace(/\D/g, "").length < 10) {
+      throw new Error("Revisa el número de WhatsApp: debe tener al menos 10 dígitos.");
+    }
+    if (doc) await ctx.db.replace(doc._id, { key: "main", ...clean });
+    else await ctx.db.insert("settings", { key: "main", ...clean });
   },
 });

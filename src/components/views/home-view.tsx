@@ -14,13 +14,16 @@ import { Container, SectionTitle } from "@/components/section";
 import { Button } from "@/components/ui/button";
 import { formatDop } from "@/lib/format";
 import { useToday } from "@/hooks/use-today";
+import { Reveal } from "@/components/motion/reveal";
+import { LiveDonations } from "@/components/live-donations";
+import { EventCountdown } from "@/components/event-countdown";
 
 export function HomeView() {
   const { locale, dict } = useI18n();
   const featured = useQuery(api.projects.featured);
   const projects = useQuery(api.projects.list);
   const activities = useQuery(api.activities.list);
-  const recent = useQuery(api.donations.recent, { limit: 6 });
+  const recent = useQuery(api.donations.recent, { limit: 12 });
 
   const today = useToday();
   const upcoming = (activities ?? []).filter((a) => !a.parentId && a.endDate >= today).slice(0, 3);
@@ -34,6 +37,7 @@ export function HomeView() {
             On wide screens the story moves to its own column. */}
         <Container className="grid gap-6 py-7 sm:gap-8 sm:py-14 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[auto_auto] lg:gap-x-10 lg:gap-y-5">
           <div className="grid gap-3 sm:gap-4 lg:self-end">
+            {upcoming[0] && <EventCountdown event={upcoming[0]} />}
             <p className="text-[0.7rem] font-bold uppercase tracking-[0.14em] text-brand-red sm:text-xs">{dict.home.eyebrow}</p>
             <h1 className="text-[2.15rem] leading-[1.02] font-extrabold tracking-tight text-balance sm:text-5xl lg:text-6xl">{dict.home.title}</h1>
           </div>
@@ -58,15 +62,18 @@ export function HomeView() {
           </div>
         </Container>
       </section>
+      <LiveDonations rows={recent} />
 
       {featured && featured.uses.length > 0 && (
         <Container className="grid gap-6 pt-12 sm:pt-16">
           <SectionTitle>{dict.home.usesTitle}</SectionTitle>
           <ul className="grid gap-3 sm:grid-cols-2">
             {featured.uses.map((u, i) => (
-              <li key={i} className="flex items-center justify-between gap-4 rounded-xl border border-border bg-card p-4">
-                <span className="font-semibold">{pick(u.label, locale)}</span>
-                <span className="tabular font-display text-lg font-bold">{formatDop(u.amountDop, locale)}</span>
+              <li key={i}>
+                <Reveal delay={i * 60} className="flex h-full items-center justify-between gap-4 rounded-xl border border-border bg-card p-4">
+                  <span className="font-semibold">{pick(u.label, locale)}</span>
+                  <span className="tabular font-display text-lg font-bold">{formatDop(u.amountDop, locale)}</span>
+                </Reveal>
               </li>
             ))}
           </ul>
@@ -89,7 +96,7 @@ export function HomeView() {
           ) : upcoming.length === 0 ? (
             <p className="text-muted-foreground">{dict.activities.empty}</p>
           ) : (
-            upcoming.map((a) => <ActivityCard key={a._id} activity={a} />)
+            upcoming.map((a, i) => <Reveal key={a._id} delay={i * 80}><ActivityCard activity={a} /></Reveal>)
           )}
         </section>
         <section className="grid content-start gap-5">
@@ -102,7 +109,7 @@ export function HomeView() {
         <Container className="grid gap-6 pt-12 sm:pt-16">
           <SectionTitle>{dict.home.projectsTitle}</SectionTitle>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {others.map((p, i) => <ProjectCard key={p._id} project={p} index={i + 1} />)}
+            {others.map((p, i) => <Reveal key={p._id} delay={i * 80} className="grid"><ProjectCard project={p} index={i + 1} /></Reveal>)}
           </div>
         </Container>
       )}

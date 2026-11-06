@@ -35,7 +35,10 @@
     "notFound": "No encontramos esta página.",
     "backHome": "Volver al inicio",
     "photoSoon": "Foto próximamente",
-    "percentFunded": "{pct}% de la meta"
+    "percentFunded": "{pct}% de la meta",
+    "share": "Compartir",
+    "goalReached": "¡Meta alcanzada!",
+    "toMilestone": "Faltan {amount} para llegar al {pct}%"
   },
   "home": {
     "eyebrow": "Comunidad Tres Ceibas · Villa Magante, R.D.",
@@ -58,7 +61,11 @@
     "play": "Reproducir",
     "pause": "Pausar",
     "timeline": "Línea de tiempo de la animación",
-    "clubTop": "CLUB COMUNITARIO"
+    "clubTop": "CLUB COMUNITARIO",
+    "gave": "donó",
+    "countdown": "Faltan {days} días para {event}",
+    "countdownOne": "Falta 1 día para {event}",
+    "countdownToday": "¡{event} es hoy!"
   },
   "projects": {
     "title": "Proyectos",
@@ -123,7 +130,11 @@
       "sports": "Deportiva",
       "community": "Comunitaria"
     },
-    "disclaimer": "Las actividades, fechas y horarios están sujetos a cambios. Revisa esta página antes del evento para ver la información más reciente."
+    "disclaimer": "Las actividades, fechas y horarios están sujetos a cambios. Revisa esta página antes del evento para ver la información más reciente.",
+    "addToCalendar": "Añadir a mi calendario",
+    "appleOutlook": "Apple u Outlook",
+    "directions": "Cómo llegar",
+    "invite": "Invita a tu familia"
   },
   "donate": {
     "title": "Haz tu donación",
@@ -162,7 +173,15 @@
     "feeHelp": "Lo cubres tú, así la comunidad recibe tu donación completa.",
     "total": "Total a pagar",
     "stripeName": "Stripe",
-    "paypalName": "PayPal"
+    "paypalName": "PayPal",
+    "dedicate": "Dedicar mi donación",
+    "dedicateHelp": "En honor de alguien especial o en memoria de un ser querido. Se mostrará junto a tu donación.",
+    "inHonor": "En honor de",
+    "inMemory": "En memoria de",
+    "tributeName": "Nombre de la persona",
+    "tributeHonorPlaceholder": "Ej.: mi madre, Ana Polanco",
+    "tributeMemoryPlaceholder": "Ej.: mi abuelo, don Julio Ventura",
+    "errorTribute": "Escribe el nombre de la persona a quien dedicas tu donación."
   },
   "thanks": {
     "title": "¡Gracias por tu aporte!",
@@ -265,5 +284,13 @@
   "footer": {
     "made": "Hecho con cariño por y para la comunidad de Tres Ceibas.",
     "admin": "Administración"
+  },
+  "contact": {
+    "label": "Escríbenos por WhatsApp",
+    "withName": "Escríbele a {name} por WhatsApp",
+    "hi": "Hola, {name}.",
+    "text": "Te escribo desde el sitio de Tres Ceibas.",
+    "aboutText": "Tengo una pregunta sobre «{about}».",
+    "questions": "¿Preguntas sobre esta actividad?"
   }
 }

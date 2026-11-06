@@ -2,6 +2,7 @@
 
 import Stripe from "stripe";
 import { v } from "convex/values";
+import { tribute } from "./schema";
 import { action, internalAction } from "./_generated/server";
 import { internal } from "./_generated/api";
 import { MAX_DONATION_USD, MIN_DONATION_USD } from "./lib/money";
@@ -13,6 +14,7 @@ const donorArgs = {
   anonymous: v.boolean(),
   message: v.optional(v.string()),
   email: v.optional(v.string()),
+  tribute: v.optional(tribute),
   locale: v.union(v.literal("es"), v.literal("en")),
 };
 

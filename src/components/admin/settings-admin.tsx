@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Field, errorText } from "./fields";
 import { formatUsd } from "@/lib/format";
+import { waLink } from "@/lib/whatsapp";
 
 type Settings = NonNullable<ReturnType<typeof useQuery<typeof api.settings.get>>>;
 
@@ -20,6 +21,9 @@ function SettingsForm({ initial }: { initial: Settings }) {
   const [sf, setSf] = useState(String(initial.fees.stripe.fixedUsd));
   const [pp, setPp] = useState(String(initial.fees.paypal.percent));
   const [pf, setPf] = useState(String(initial.fees.paypal.fixedUsd));
+  const [wa, setWa] = useState(initial.whatsapp ?? "");
+  const [waName, setWaName] = useState(initial.whatsappName ?? "");
+  const [email, setEmail] = useState(initial.contactEmail ?? "");
   const [busy, setBusy] = useState(false);
   const example = coverFee(100, { percent: Number(sp) || 0, fixedUsd: Number(sf) || 0 });
 
@@ -33,6 +37,9 @@ function SettingsForm({ initial }: { initial: Settings }) {
           stripe: { percent: Number(sp), fixedUsd: Number(sf) },
           paypal: { percent: Number(pp), fixedUsd: Number(pf) },
         },
+        whatsapp: wa,
+        whatsappName: waName,
+        contactEmail: email,
       });
       toast.success("Ajustes guardados.");
     } catch (err) {
@@ -67,6 +74,19 @@ function SettingsForm({ initial }: { initial: Settings }) {
           <Field label="Stripe: fijo (USD)" htmlFor="s-sf"><Input id="s-sf" inputMode="decimal" value={sf} onChange={(e) => setSf(e.target.value)} /></Field>
           <Field label="PayPal: porcentaje" htmlFor="s-pp"><Input id="s-pp" inputMode="decimal" value={pp} onChange={(e) => setPp(e.target.value)} /></Field>
           <Field label="PayPal: fijo (USD)" htmlFor="s-pf"><Input id="s-pf" inputMode="decimal" value={pf} onChange={(e) => setPf(e.target.value)} /></Field>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Contacto</CardTitle>
+          <CardDescription>El botón «Escríbenos por WhatsApp» del sitio abre una conversación con este número. Déjalo vacío para ocultarlo.</CardDescription>
+        </CardHeader>
+        <CardContent className="grid gap-4 sm:grid-cols-3">
+          <Field label="WhatsApp" htmlFor="s-wa" hint={waLink(wa) ? `Abre ${waLink(wa)}` : "Sin número, no se muestra el botón."}>
+            <Input id="s-wa" type="tel" inputMode="tel" placeholder="809-512-9949" value={wa} onChange={(e) => setWa(e.target.value)} />
+          </Field>
+          <Field label="Quién responde" htmlFor="s-wa-name"><Input id="s-wa-name" placeholder="Griselda" value={waName} onChange={(e) => setWaName(e.target.value)} /></Field>
+          <Field label="Correo (opcional)" htmlFor="s-email"><Input id="s-email" type="email" placeholder="comite@tresceibas.org" value={email} onChange={(e) => setEmail(e.target.value)} /></Field>
         </CardContent>
       </Card>
       <Button type="submit" disabled={busy} className="w-fit">Guardar ajustes</Button>

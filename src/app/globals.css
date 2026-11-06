@@ -184,3 +184,14 @@
 .club-story-scrub {
   accent-color: var(--brand-green);
 }
+
+/* Scroll reveal (see components/motion/reveal.tsx). */
+.reveal { transition: opacity 0.6s ease, translate 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.reveal[data-reveal="hidden"] { opacity: 0; translate: 0 1.25rem; }
+.reveal[data-reveal="shown"] { opacity: 1; translate: 0 0; }
+
+/* Live donations strip. */
+@keyframes tc-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tc-marquee { animation: tc-marquee var(--marquee-duration, 40s) linear infinite; }
+.tc-marquee:hover, .tc-marquee:focus-within { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .tc-marquee { animation: none; } }

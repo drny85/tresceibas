@@ -38,7 +38,6 @@ export function ProjectDetailView() {
 
   return (
     <Container className="grid gap-10 py-10 sm:py-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
-      <title>{`${pick(project.title, locale)} · Tres Ceibas`}</title>
       <div className="grid content-start gap-8">
         <header className="grid gap-3">
           <Badge variant={project.status === "completed" ? "success" : "secondary"}>

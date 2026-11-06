@@ -45,6 +45,9 @@ export function DonateView() {
   const [anonymous, setAnonymous] = useState(false);
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [dedicate, setDedicate] = useState(false);
+  const [tributeKind, setTributeKind] = useState<"honor" | "memory">("honor");
+  const [tributeName, setTributeName] = useState("");
   const [method, setMethod] = useState<Method>("stripe");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(search.get("cancelado") ? t.cancelled : null);
@@ -60,6 +63,7 @@ export function DonateView() {
     if (!project) return t.errorProject;
     if (!amountOk) return t.errorAmount;
     if (!anonymous && !name.trim()) return t.errorName;
+    if (dedicate && !tributeName.trim()) return t.errorTribute;
     return null;
   }
 
@@ -70,6 +74,7 @@ export function DonateView() {
     anonymous,
     message: message.trim() || undefined,
     email: email.trim() || undefined,
+    tribute: dedicate && tributeName.trim() ? { kind: tributeKind, name: tributeName.trim() } : undefined,
     locale,
   });
 
@@ -174,6 +179,43 @@ export function DonateView() {
             <Input id="donor-email" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
             <p className="text-xs text-muted-foreground">{t.emailHelp}</p>
           </div>
+          <div className="grid gap-3 rounded-xl border border-border bg-card p-4">
+            <div className="flex items-start justify-between gap-4">
+              <div className="grid gap-1">
+                <Label htmlFor="dedicate">{t.dedicate}</Label>
+                <p className="text-sm text-muted-foreground">{t.dedicateHelp}</p>
+              </div>
+              <Switch id="dedicate" checked={dedicate} onCheckedChange={setDedicate} />
+            </div>
+            {dedicate && (
+              <div className="grid gap-3">
+                <div role="radiogroup" aria-label={t.dedicate} className="grid grid-cols-2 gap-2">
+                  {(["honor", "memory"] as const).map((k) => (
+                    <button
+                      key={k}
+                      type="button"
+                      role="radio"
+                      aria-checked={tributeKind === k}
+                      onClick={() => setTributeKind(k)}
+                      className={cn(
+                        "min-h-11 rounded-lg border px-3 text-sm font-semibold transition-colors",
+                        tributeKind === k ? "border-primary bg-primary text-primary-foreground" : "border-border hover:bg-muted",
+                      )}
+                    >
+                      {k === "honor" ? t.inHonor : t.inMemory}
+                    </button>
+                  ))}
+                </div>
+                <Input
+                  aria-label={t.tributeName}
+                  maxLength={80}
+                  placeholder={tributeKind === "honor" ? t.tributeHonorPlaceholder : t.tributeMemoryPlaceholder}
+                  value={tributeName}
+                  onChange={(e) => setTributeName(e.target.value)}
+                />
+              </div>
+            )}
+          </div>
           <div className="grid gap-2">
             <Label htmlFor="donor-message">{t.message}</Label>
             <Textarea id="donor-message" maxLength={280} placeholder={t.messagePlaceholder} value={message} onChange={(e) => setMessage(e.target.value)} />
@@ -229,7 +271,7 @@ export function DonateView() {
           <PayPalScriptProvider options={{ clientId: PAYPAL_CLIENT_ID, currency: "USD", intent: "capture", locale: locale === "es" ? "es_US" : "en_US" }}>
             <PayPalButtons
               style={{ layout: "vertical", shape: "pill", label: "donate" }}
-              forceReRender={[amount, project?._id, anonymous, name, message, email]}
+              forceReRender={[amount, project?._id, anonymous, name, message, email, dedicate, tributeKind, tributeName]}
               createOrder={async () => {
                 const problem = validate();
                 setError(problem);

@@ -35,7 +35,10 @@
     "notFound": "We couldn't find this page.",
     "backHome": "Back to home",
     "photoSoon": "Photo coming soon",
-    "percentFunded": "{pct}% of the goal"
+    "percentFunded": "{pct}% of the goal",
+    "share": "Share",
+    "goalReached": "Goal reached!",
+    "toMilestone": "{amount} to go to reach {pct}%"
   },
   "home": {
     "eyebrow": "Tres Ceibas community · Villa Magante, D.R.",
@@ -58,7 +61,11 @@
     "play": "Play",
     "pause": "Pause",
     "timeline": "Animation timeline",
-    "clubTop": "COMMUNITY CLUB"
+    "clubTop": "COMMUNITY CLUB",
+    "gave": "gave",
+    "countdown": "{days} days to {event}",
+    "countdownOne": "1 day to {event}",
+    "countdownToday": "{event} is today!"
   },
   "projects": {
     "title": "Projects",
@@ -123,7 +130,11 @@
       "sports": "Sports",
       "community": "Community"
     },
-    "disclaimer": "Activities, dates and times are subject to change. Check this page before the event for the latest information."
+    "disclaimer": "Activities, dates and times are subject to change. Check this page before the event for the latest information.",
+    "addToCalendar": "Add to my calendar",
+    "appleOutlook": "Apple or Outlook",
+    "directions": "Directions",
+    "invite": "Invite your family"
   },
   "donate": {
     "title": "Make your donation",
@@ -162,7 +173,15 @@
     "feeHelp": "You cover it, so the community receives your full donation.",
     "total": "Total to pay",
     "stripeName": "Stripe",
-    "paypalName": "PayPal"
+    "paypalName": "PayPal",
+    "dedicate": "Dedicate my donation",
+    "dedicateHelp": "In honor of someone special or in memory of a loved one. It is shown next to your donation.",
+    "inHonor": "In honor of",
+    "inMemory": "In memory of",
+    "tributeName": "Person's name",
+    "tributeHonorPlaceholder": "E.g. my mother, Ana Polanco",
+    "tributeMemoryPlaceholder": "E.g. my grandfather, Don Julio Ventura",
+    "errorTribute": "Write the name of the person you are dedicating your donation to."
   },
   "thanks": {
     "title": "Thank you for your gift!",
@@ -265,5 +284,13 @@
   "footer": {
     "made": "Made with love by and for the Tres Ceibas community.",
     "admin": "Admin"
+  },
+  "contact": {
+    "label": "Message us on WhatsApp",
+    "withName": "Message {name} on WhatsApp",
+    "hi": "Hi {name}.",
+    "text": "I'm writing from the Tres Ceibas website.",
+    "aboutText": "I have a question about \"{about}\".",
+    "questions": "Questions about this activity?"
   }
 }

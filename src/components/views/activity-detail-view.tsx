@@ -1,5 +1,6 @@
 "use client";
 
+import { ActivityActions } from "@/components/activity-actions";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -31,7 +32,6 @@ export function ActivityDetailView() {
 
   return (
     <Container className="grid gap-10 py-10 sm:py-14">
-      <title>{`${pick(activity.title, locale)} · Tres Ceibas`}</title>
       <header className="grid max-w-3xl gap-4">
         {activity.parent && (
           <Link href={`/${locale}/actividades/${activity.parent.slug}`} className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
@@ -64,6 +64,7 @@ export function ActivityDetailView() {
           )}
         </dl>
         <ScheduleDisclaimer />
+        <ActivityActions activity={activity} />
       </header>
 
       <div className="grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]">
