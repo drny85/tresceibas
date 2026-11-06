@@ -1,4 +1,7 @@
 import { internalMutation } from "./_generated/server";
+import type { MutationCtx } from "./_generated/server";
+import type { Infer } from "convex/values";
+import type { activityCategory } from "./schema";
 
 const t = (es: string, en: string) => ({ es, en });
 
@@ -101,6 +104,103 @@ export const run = internalMutation({
     for (const [i, [name, es, en]] of members.entries()) {
       await ctx.db.insert("committee", { name, role: t(es, en), order: i + 1 });
     }
+    await addProgram(ctx);
     return "Datos iniciales cargados.";
   },
+});
+
+type Category = Infer<typeof activityCategory>;
+type ProgramItem = [slug: string, date: string, time: string | undefined, category: Category, responsible: string, es: [string, string], en: [string, string], endDate?: string];
+
+/** Every activity of the Tres Ceiberos Ausente 2027 program, from the project document. */
+const PROGRAM: ProgramItem[] = [
+  ["jugada-de-gallos-2027", "2027-02-19", "10:00 a. m.", "community", "Comité organizador",
+    ["Jugada de gallos", "La tradicional jugada de gallos abre el fin de semana de Tres Ceiberos Ausente."],
+    ["Cockfights", "The traditional cockfights open the Tres Ceiberos Ausente weekend."]],
+  ["recibimiento-visitantes-2027", "2027-02-19", "4:00 p. m.", "community", "Comité organizador",
+    ["Recibimiento de visitantes y participantes", "Damos la bienvenida a los ceiberos que vienen del exterior y a todos los participantes."],
+    ["Welcoming visitors and participants", "We welcome the ceiberos coming home from abroad and every participant."]],
+  ["caminata-comunitaria-2027", "2027-02-19", "5:00 p. m.", "sports", "Comité deportivo",
+    ["Caminata comunitaria", "Una caminata por la comunidad para todas las edades."],
+    ["Community walk", "A walk through the community for all ages."]],
+  ["acto-de-apertura-2027", "2027-02-19", "6:00 p. m.", "community", "Comité organizador",
+    ["Acto de apertura y palabras de bienvenida", "Apertura oficial del evento con palabras del comité organizador."],
+    ["Opening ceremony and welcome", "Official opening of the event with words from the organizing committee."]],
+  ["presentaciones-artisticas-2027", "2027-02-19", "7:00 p. m.", "cultural", "Encargada de Cultura",
+    ["Presentaciones artísticas y culturales", "Baile, música típica y talento de la comunidad."],
+    ["Art and cultural performances", "Dance, traditional music and local talent."]],
+  ["musica-tipica-integracion-2027", "2027-02-19", "8:30 p. m.", "cultural", "Comité organizador",
+    ["Música típica y actividades de integración", "Cerramos el viernes con música típica y convivencia."],
+    ["Traditional music and get-together", "We close Friday with traditional music and time together."]],
+  ["juegos-infantiles-2027", "2027-02-19", undefined, "sports", "Comité organizador",
+    ["Juegos recreativos para niños", "Juegos y actividades para los más pequeños durante todo el fin de semana."],
+    ["Games for children", "Games and activities for the little ones all weekend long."], "2027-02-21"],
+  ["competencias-atletismo-2027", "2027-02-20", "9:00 a. m.", "sports", "Comité deportivo",
+    ["Competencias de atletismo", "Carreras y pruebas de atletismo para jóvenes y adultos."],
+    ["Track and field events", "Races and track events for young people and adults."]],
+  ["torneo-baloncesto-2027", "2027-02-20", "10:30 a. m.", "sports", "Entrenadores y comité deportivo",
+    ["Torneo de baloncesto", "El torneo empieza el sábado a las 10:30 a. m., sigue a las 4:00 p. m. y la final se juega el domingo de 9:00 a 11:30 a. m."],
+    ["Basketball tournament", "The tournament starts Saturday at 10:30 a.m., continues at 4:00 p.m., and the final is on Sunday from 9:00 to 11:30 a.m."], "2027-02-21"],
+  ["feria-gastronomica-kermes-2027", "2027-02-20", "12:00 m.", "cultural", "Comité organizador",
+    ["Feria gastronómica, kermés y artesanía", "Comida típica, kermés y exposición de artesanía local."],
+    ["Food fair, kermes and crafts", "Traditional food, a kermes and a local crafts exhibit."]],
+  ["baton-ballet-batallon-2027", "2027-02-20", "6:00 p. m.", "cultural", "Comité cultural",
+    ["Batón ballet y batallón estudiantil", "Presentación del batón ballet y del batallón estudiantil."],
+    ["Baton ballet and student battalion", "Performances by the baton ballet and the student battalion."]],
+  ["gran-actividad-cultural-2027", "2027-02-20", "9:00 p. m.", "cultural", "Comité organizador",
+    ["Gran actividad cultural y convivencia comunitaria", "La gran noche del sábado para compartir en comunidad."],
+    ["Grand cultural night", "Saturday's big night to celebrate together as a community."]],
+  ["misa-comunitaria-2027", "2027-02-21", "8:00 a. m.", "religious", "Comité religioso",
+    ["Misa comunitaria", "Damos gracias juntos en la misa del domingo."],
+    ["Community mass", "We give thanks together at Sunday mass."]],
+  ["premiacion-2027", "2027-02-21", "3:00 p. m.", "community", "Comité organizador",
+    ["Premiación de participantes y equipos ganadores", "Trofeos, medallas y reconocimientos para los ganadores."],
+    ["Awards for participants and winning teams", "Trophies, medals and recognition for the winners."]],
+  ["clausura-2027", "2027-02-21", "4:00 p. m.", "community", "Comité organizador",
+    ["Palabras de agradecimiento, clausura y despedida", "Cierre del evento y despedida de los visitantes a las 5:00 p. m."],
+    ["Thanks, closing and farewell", "Closing of the event and farewell to visitors at 5:00 p.m."]],
+];
+
+async function addProgram(ctx: MutationCtx) {
+  const event = await ctx.db
+    .query("activities")
+    .withIndex("by_slug", (q) => q.eq("slug", "tres-ceiberos-ausente-2027"))
+    .unique();
+  if (!event) return 0;
+  let added = 0;
+  for (const [slug, date, time, category, responsible, es, en, endDate] of PROGRAM) {
+    const exists = await ctx.db
+      .query("activities")
+      .withIndex("by_slug", (q) => q.eq("slug", slug))
+      .unique();
+    if (exists) continue;
+    await ctx.db.insert("activities", {
+      slug,
+      title: t(es[0], en[0]),
+      summary: t(es[1], en[1]),
+      description: t(es[1], en[1]),
+      startDate: date,
+      endDate: endDate ?? date,
+      location: event.location,
+      projectId: event.projectId,
+      schedule: [],
+      published: true,
+      parentId: event._id,
+      time,
+      category,
+      responsible,
+    });
+    added++;
+  }
+  return added;
+}
+
+/**
+ * Adds any missing activities of the 2027 program to an existing database
+ * without touching anything else:
+ *   bunx convex run seed:program
+ */
+export const program = internalMutation({
+  args: {},
+  handler: async (ctx) => `Actividades agregadas: ${await addProgram(ctx)}`,
 });

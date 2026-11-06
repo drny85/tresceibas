@@ -77,7 +77,20 @@
     "where": "Place",
     "schedule": "Schedule",
     "responsible": "In charge",
-    "benefits": "In support of"
+    "benefits": "In support of",
+    "program": "Full program",
+    "programLead": "Every activity of the event, day by day. Tap one for details.",
+    "all": "All",
+    "partOf": "Part of",
+    "time": "Time",
+    "allDay": "All day",
+    "events": "Events",
+    "categories": {
+      "cultural": "Cultural",
+      "religious": "Religious",
+      "sports": "Sports",
+      "community": "Community"
+    }
   },
   "donate": {
     "title": "Make your donation",

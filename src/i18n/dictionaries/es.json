@@ -77,7 +77,20 @@
     "where": "Lugar",
     "schedule": "Programa",
     "responsible": "Responsable",
-    "benefits": "A beneficio de"
+    "benefits": "A beneficio de",
+    "program": "Programa completo",
+    "programLead": "Todas las actividades del evento, día por día. Toca una para ver los detalles.",
+    "all": "Todas",
+    "partOf": "Parte de",
+    "time": "Hora",
+    "allDay": "Todo el día",
+    "events": "Eventos",
+    "categories": {
+      "cultural": "Cultural",
+      "religious": "Religiosa",
+      "sports": "Deportiva",
+      "community": "Comunitaria"
+    }
   },
   "donate": {
     "title": "Haz tu donación",

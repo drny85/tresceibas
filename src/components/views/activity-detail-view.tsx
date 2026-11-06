@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useQuery } from "convex/react";
-import { CalendarDays, MapPin, HeartHandshake } from "lucide-react";
+import { CalendarDays, Clock, MapPin, HeartHandshake, UserRound, ArrowLeft } from "lucide-react";
+import { ActivityProgram, CategoryBadge } from "@/components/activity-program";
 import { api } from "@convex/_generated/api";
 import { useI18n, pick } from "@/i18n/provider";
 import { PlaceholderImage } from "@/components/placeholder-image";
@@ -31,6 +32,12 @@ export function ActivityDetailView() {
   return (
     <Container className="grid gap-10 py-10 sm:py-14">
       <header className="grid max-w-3xl gap-4">
+        {activity.parent && (
+          <Link href={`/${locale}/actividades/${activity.parent.slug}`} className="inline-flex w-fit items-center gap-1.5 text-sm font-semibold text-primary hover:underline">
+            <ArrowLeft className="size-4" /> {dict.activities.partOf} {pick(activity.parent.title, locale)}
+          </Link>
+        )}
+        {activity.category && <CategoryBadge category={activity.category} />}
         <h1 className="text-[2.15rem] leading-[1.05] font-extrabold tracking-tight text-balance sm:text-5xl">{pick(activity.title, locale)}</h1>
         <p className="text-lg text-muted-foreground text-pretty">{pick(activity.summary, locale)}</p>
         <dl className="grid gap-2 text-base sm:grid-cols-2">
@@ -42,6 +49,18 @@ export function ActivityDetailView() {
             <MapPin className="mt-0.5 size-5 text-brand-red" />
             <div><dt className="sr-only">{dict.activities.where}</dt><dd className="font-semibold">{activity.location}</dd></div>
           </div>
+          {activity.time && (
+            <div className="flex items-start gap-2">
+              <Clock className="mt-0.5 size-5 text-brand-red" />
+              <div><dt className="sr-only">{dict.activities.time}</dt><dd className="font-semibold">{activity.time}</dd></div>
+            </div>
+          )}
+          {activity.responsible && (
+            <div className="flex items-start gap-2">
+              <UserRound className="mt-0.5 size-5 text-brand-red" />
+              <div><dt className="sr-only">{dict.activities.responsible}</dt><dd className="font-semibold">{activity.responsible}</dd></div>
+            </div>
+          )}
         </dl>
       </header>
 
@@ -56,7 +75,14 @@ export function ActivityDetailView() {
           </div>
           <p className="max-w-prose whitespace-pre-line text-lg leading-relaxed text-pretty">{pick(activity.description, locale)}</p>
 
-          {activity.schedule.length > 0 && (
+          {activity.program.length > 0 && (
+            <section className="grid gap-4">
+              <h2 className="text-2xl font-bold">{dict.activities.program}</h2>
+              <ActivityProgram items={activity.program} />
+            </section>
+          )}
+
+          {activity.program.length === 0 && activity.schedule.length > 0 && (
             <section className="grid gap-5">
               <h2 className="text-2xl font-bold">{dict.activities.schedule}</h2>
               {activity.schedule.map((day, i) => (

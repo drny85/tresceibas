@@ -32,6 +32,18 @@ type Draft = {
   imageId?: Id<"_storage">;
   imageUrl?: string | null;
   published: boolean;
+  parentId?: Id<"activities">;
+  time?: string;
+  category?: Category;
+  responsible?: string;
+};
+
+type Category = "cultural" | "religious" | "sports" | "community";
+export const CATEGORY_LABEL: Record<Category, string> = {
+  cultural: "Cultural",
+  religious: "Religiosa",
+  sports: "Deportiva",
+  community: "Comunitaria",
 };
 
 const slugify = (s: string) =>
@@ -41,6 +53,7 @@ const fromActivity = (a: Activity): Draft => ({
   id: a._id, slug: a.slug, title: a.title, summary: a.summary, description: a.description,
   startDate: a.startDate, endDate: a.endDate, location: a.location, projectId: a.projectId,
   schedule: a.schedule, imageId: a.imageId, imageUrl: a.imageUrl, published: a.published,
+  parentId: a.parentId, time: a.time, category: a.category, responsible: a.responsible,
 });
 
 const blank = (): Draft => ({
@@ -88,6 +101,8 @@ function ScheduleEditor({ value, onChange }: { value: Day[]; onChange: (v: Day[]
 function ActivityForm({ initial, onDone }: { initial: Draft; onDone: () => void }) {
   const save = useMutation(api.activities.save);
   const projects = useQuery(api.projects.listAll);
+  const all = useQuery(api.activities.listAll);
+  const events = (all ?? []).filter((a) => !a.parentId && a._id !== initial.id);
   const [d, setD] = useState<Draft>(initial);
   const [busy, setBusy] = useState(false);
   const set = <K extends keyof Draft>(k: K, v: Draft[K]) => setD((x) => ({ ...x, [k]: v }));
@@ -102,6 +117,7 @@ function ActivityForm({ initial, onDone }: { initial: Draft; onDone: () => void 
         startDate: d.startDate, endDate: d.endDate || d.startDate, location: d.location, projectId: d.projectId,
         schedule: d.schedule.map((day) => ({ ...day, items: day.items.filter((x) => x.label.es.trim()) })),
         imageId: d.imageId, published: d.published,
+        parentId: d.parentId, time: d.time, category: d.category, responsible: d.responsible,
       });
       toast.success("Actividad guardada.");
       onDone();
@@ -139,7 +155,41 @@ function ActivityForm({ initial, onDone }: { initial: Draft; onDone: () => void 
               <Input id="a-slug" value={d.slug} onChange={(e) => set("slug", slugify(e.target.value))} placeholder={slugify(d.title.es)} />
             </Field>
           </div>
-          <ScheduleEditor value={d.schedule} onChange={(v) => set("schedule", v)} />
+          <div className="grid gap-4 md:grid-cols-4">
+            <Field label="Parte del evento" htmlFor="a-parent" hint="Déjalo en «Ninguno» si es un evento principal." className="md:col-span-2">
+              <Select
+                id="a-parent"
+                value={d.parentId ?? ""}
+                onChange={(e) => {
+                  const parentId = (e.target.value || undefined) as Id<"activities"> | undefined;
+                  const parent = events.find((x) => x._id === parentId);
+                  setD((x) => ({
+                    ...x,
+                    parentId,
+                    // Inherit place and project from the event when they are still empty.
+                    location: parent && !x.location.trim() ? parent.location : x.location,
+                    projectId: parent && !x.projectId ? parent.projectId : x.projectId,
+                  }));
+                }}
+              >
+                <option value="">Ninguno</option>
+                {events.map((ev) => <option key={ev._id} value={ev._id}>{ev.title.es}</option>)}
+              </Select>
+            </Field>
+            <Field label="Hora" htmlFor="a-time" hint="Ej.: 4:00 p. m.">
+              <Input id="a-time" value={d.time ?? ""} onChange={(e) => set("time", e.target.value)} placeholder="4:00 p. m." />
+            </Field>
+            <Field label="Tipo" htmlFor="a-category">
+              <Select id="a-category" value={d.category ?? ""} onChange={(e) => set("category", (e.target.value || undefined) as Category | undefined)}>
+                <option value="">Sin tipo</option>
+                {(Object.keys(CATEGORY_LABEL) as Category[]).map((c) => <option key={c} value={c}>{CATEGORY_LABEL[c]}</option>)}
+              </Select>
+            </Field>
+            <Field label="Responsable" htmlFor="a-responsible" className="md:col-span-2">
+              <Input id="a-responsible" value={d.responsible ?? ""} onChange={(e) => set("responsible", e.target.value)} placeholder="Comité deportivo" />
+            </Field>
+          </div>
+          {!d.parentId && <ScheduleEditor value={d.schedule} onChange={(v) => set("schedule", v)} />}
           <Field label="Foto"><ImageUpload value={d.imageId} previewUrl={d.imageUrl} onChange={(id) => set("imageId", id)} /></Field>
           <div className="flex flex-wrap items-center justify-between gap-4">
             <div className="flex items-center gap-2">
@@ -155,7 +205,12 @@ function ActivityForm({ initial, onDone }: { initial: Draft; onDone: () => void 
 }
 
 export function ActivitiesAdmin() {
-  const activities = useQuery(api.activities.listAll);
+  const all = useQuery(api.activities.listAll);
+  // Events first, each followed by the activities of its program.
+  const activities = all
+    ?.filter((a) => !a.parentId)
+    .flatMap((ev) => [ev, ...all.filter((c) => c.parentId === ev._id)])
+    .concat(all.filter((c) => c.parentId && !all.some((p) => p._id === c.parentId)));
   const remove = useMutation(api.activities.remove);
   const [editing, setEditing] = useState<Draft | null>(null);
   const [confirmId, setConfirmId] = useState<string | null>(null);
@@ -168,14 +223,19 @@ export function ActivitiesAdmin() {
         <Button onClick={() => setEditing(blank())}><Plus /> Nueva actividad</Button>
       </div>
       {(activities ?? []).map((a) => (
-        <Card key={a._id} className="py-4">
+        <Card key={a._id} className={a.parentId ? "ml-4 border-dashed py-3 sm:ml-8" : "py-4"}>
           <CardContent className="flex flex-wrap items-center justify-between gap-4">
             <div className="grid gap-1">
               <div className="flex flex-wrap items-center gap-2">
-                <p className="font-display text-lg font-bold">{a.title.es}</p>
+                <p className={a.parentId ? "font-semibold" : "font-display text-lg font-bold"}>{a.title.es}</p>
+                {a.category && <Badge variant="secondary">{CATEGORY_LABEL[a.category]}</Badge>}
                 <Badge variant={a.published ? "success" : "secondary"}>{a.published ? "Publicada" : "Borrador"}</Badge>
               </div>
-              <p className="text-sm text-muted-foreground">{formatDateRange(a.startDate, a.endDate, "es")} · {a.location}</p>
+              <p className="text-sm text-muted-foreground">
+                {formatDateRange(a.startDate, a.endDate, "es")}
+                {a.time ? ` · ${a.time}` : ""}
+                {a.parentId ? (a.responsible ? ` · ${a.responsible}` : "") : ` · ${a.location}`}
+              </p>
             </div>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" onClick={() => setEditing(fromActivity(a))}><Pencil /> Editar</Button>

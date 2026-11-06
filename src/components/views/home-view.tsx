@@ -23,7 +23,7 @@ export function HomeView() {
   const recent = useQuery(api.donations.recent, { limit: 6 });
 
   const today = useToday();
-  const upcoming = (activities ?? []).filter((a) => a.endDate >= today).slice(0, 3);
+  const upcoming = (activities ?? []).filter((a) => !a.parentId && a.endDate >= today).slice(0, 3);
   const others = (projects ?? []).filter((p) => p._id !== featured?._id);
   const donateHref = featured ? `/${locale}/donar?proyecto=${featured.slug}` : `/${locale}/donar`;
 

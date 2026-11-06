@@ -20,6 +20,13 @@ export const scheduleDay = v.object({
   ),
 });
 
+export const activityCategory = v.union(
+  v.literal("cultural"),
+  v.literal("religious"),
+  v.literal("sports"),
+  v.literal("community"),
+);
+
 export default defineSchema({
   projects: defineTable({
     slug: v.string(),
@@ -48,9 +55,15 @@ export default defineSchema({
     schedule: v.array(scheduleDay),
     imageId: v.optional(v.id("_storage")),
     published: v.boolean(),
+    // Optional details for a single activity inside a larger event's program.
+    parentId: v.optional(v.id("activities")),
+    time: v.optional(v.string()), // e.g. "5:00 p. m."
+    category: v.optional(activityCategory),
+    responsible: v.optional(v.string()),
   })
     .index("by_slug", ["slug"])
-    .index("by_startDate", ["startDate"]),
+    .index("by_startDate", ["startDate"])
+    .index("by_parent", ["parentId"]),
 
   donations: defineTable({
     projectId: v.id("projects"),
