@@ -9,10 +9,6 @@ import { ConvexClientProvider } from "@/components/convex-client-provider";
 import { I18nProvider } from "@/i18n/provider";
 import { getDictionary } from "@/i18n/get-dictionary";
 import { isLocale, locales } from "@/i18n/config";
-import { Suspense } from "react";
-import { SiteHeader, SiteHeaderFallback } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { MobileDonateBar } from "@/components/mobile-donate-bar";
 import { Toaster } from "@/components/ui/sonner";
 import "../globals.css";
 
@@ -61,14 +57,7 @@ export default async function RootLayout({
   const app = (
     <ConvexClientProvider>
       <I18nProvider locale={lang} dict={dict}>
-        <Suspense fallback={<SiteHeaderFallback />}>
-          <SiteHeader />
-        </Suspense>
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
-        <Suspense fallback={null}>
-          <MobileDonateBar />
-        </Suspense>
+        {children}
         <Toaster position="top-center" />
       </I18nProvider>
     </ConvexClientProvider>

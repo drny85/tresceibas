@@ -1,6 +1,8 @@
 "use client";
 
-import { SignInButton, SignOutButton, UserButton } from "@clerk/nextjs";
+import { SignInButton, SignOutButton } from "@clerk/nextjs";
+import { useEffect, useState } from "react";
+import { CalendarDays, FolderHeart, HandCoins, Settings, Users } from "lucide-react";
 import { useConvexAuth, useQuery } from "convex/react";
 import { api } from "@convex/_generated/api";
 import { clerkEnabled } from "@/lib/clerk-enabled";
@@ -64,26 +66,51 @@ function AdminWithAuth() {
     );
   }
 
+  return <AdminPanel />;
+}
+
+const SECTIONS = [
+  { id: "actividades", label: "Actividades", icon: CalendarDays, Panel: ActivitiesAdmin },
+  { id: "donaciones", label: "Donaciones", icon: HandCoins, Panel: DonationsAdmin },
+  { id: "proyectos", label: "Proyectos", icon: FolderHeart, Panel: ProjectsAdmin },
+  { id: "comite", label: "Comité", icon: Users, Panel: CommitteeAdmin },
+  { id: "ajustes", label: "Ajustes", icon: Settings, Panel: SettingsAdmin },
+] as const;
+
+/** Sections live in the URL hash, so "Ver sitio" and back returns to the same one. */
+export function AdminPanel() {
+  const [tab, setTab] = useState<string>("actividades");
+  useEffect(() => {
+    const read = () => {
+      const h = window.location.hash.slice(1);
+      if (SECTIONS.some((s) => s.id === h)) setTab(h);
+    };
+    read();
+    window.addEventListener("hashchange", read);
+    return () => window.removeEventListener("hashchange", read);
+  }, []);
+  const change = (v: string) => {
+    setTab(v);
+    history.replaceState(null, "", `#${v}`);
+  };
+
   return (
-    <Container className="grid gap-6 py-10">
-      <div className="flex flex-wrap items-center justify-between gap-4">
-        <h1 className="text-3xl font-extrabold">Administración</h1>
-        <UserButton />
-      </div>
+    <Container className="grid max-w-7xl gap-6 py-6 sm:py-8">
       <AdminSummary />
-      <Tabs defaultValue="activities">
-        <TabsList className="w-full flex-nowrap justify-start overflow-x-auto sm:w-fit">
-          <TabsTrigger value="activities">Actividades</TabsTrigger>
-          <TabsTrigger value="donations">Donaciones</TabsTrigger>
-          <TabsTrigger value="projects">Proyectos</TabsTrigger>
-          <TabsTrigger value="committee">Comité</TabsTrigger>
-          <TabsTrigger value="settings">Ajustes</TabsTrigger>
+      <Tabs value={tab} onValueChange={change} orientation="vertical" className="min-w-0 gap-6 lg:grid lg:grid-cols-[12rem_minmax(0,1fr)] lg:items-start">
+        <TabsList
+          aria-label="Secciones"
+          className="w-full min-w-0 flex-nowrap justify-start overflow-x-auto lg:sticky lg:top-20 lg:grid lg:w-full lg:gap-1 lg:rounded-2xl lg:bg-card lg:p-2 lg:ring-1 lg:ring-border"
+        >
+          {SECTIONS.map(({ id, label, icon: Icon }) => (
+            <TabsTrigger key={id} value={id} className="inline-flex shrink-0 items-center gap-2 lg:w-full lg:justify-start lg:rounded-xl lg:py-2.5 lg:data-[state=active]:bg-primary lg:data-[state=active]:text-primary-foreground">
+              <Icon className="size-4" /> {label}
+            </TabsTrigger>
+          ))}
         </TabsList>
-        <TabsContent value="donations"><DonationsAdmin /></TabsContent>
-        <TabsContent value="projects"><ProjectsAdmin /></TabsContent>
-        <TabsContent value="activities"><ActivitiesAdmin /></TabsContent>
-        <TabsContent value="committee"><CommitteeAdmin /></TabsContent>
-        <TabsContent value="settings"><SettingsAdmin /></TabsContent>
+        {SECTIONS.map(({ id, Panel }) => (
+          <TabsContent key={id} value={id} className="min-w-0"><Panel /></TabsContent>
+        ))}
       </Tabs>
     </Container>
   );
